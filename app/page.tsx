@@ -26,11 +26,11 @@ const ListItems = [
 export default function Home() {
   return (
     <main className="">
-      <div className="h-[60vh] w-full bg-red-400 relative text-center">
-        <Image src="/images/background.webp" layout="fill" className="w-full h-full bg-cover" alt="" />
+      <div className="h-[40vh] w-full bg-red-400 relative text-center">
+        <Image src="/images/background.webp" layout="fill" className="w-full h-full object-cover absolute" alt="" />
 
-        <div className="absolute w-full h-full flex flex-col space-y-6 items-center justify-center text-white bg-gradient-to-r from-[#000] to-[#00000049] p-2.5">
-          <p className="text-5xl">
+        <div className="absolute w-full h-full flex flex-col space-y-6 items-center justify-center text-white bg-gradient-to-r from-[#000] to-[#00000099] p-2.5">
+          <p className="text-4xl">
             Bet Like A <span className="text-cblue">Pro®</span>
           </p>
           <p className="text-3xl">Betting models. Real-time odds. Betting stats.</p>
@@ -38,7 +38,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="grid grid-cols-3 pagew mx-auto gap-10 py-20 px-2.5">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pagew mx-auto gap-10 py-20 px-2.5">
         {ListItems.map((item) => {
           return (
             <div className="flex flex-col items-center text-center space-y-5" key={item.href}>
@@ -53,7 +53,7 @@ export default function Home() {
         })}
       </section>
 
-      <section className="p-2.5 flex flex-col items-center">
+      <section className="p-2.5 flex flex-col items-center px-10">
         <h2 className="text-2xl text-cblue">Our data is trusted by;</h2>
         <hr />
 
