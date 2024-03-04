@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CustomQueryClient from "@/components/CustomQueryClient";
 
 const poppins = Open_Sans({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Navbar />
-        {children}
-        <Footer />
+        <CustomQueryClient>
+          <Navbar />
+          {children}
+          <Footer />
+        </CustomQueryClient>
       </body>
     </html>
   );

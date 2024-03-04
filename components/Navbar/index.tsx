@@ -73,7 +73,9 @@ function Navbar() {
     <nav className="w-full bg-black top-0 sticky text-white flex justify-center z-50">
       <header className="flex justify-between items-center pagew p-3">
         <div className="flex space-x-7 items-center">
-          <Image src="/images/logo.webp" width={100} height={100} alt="logo" />
+          <Link href="/">
+            <Image src="/images/logo.webp" width={100} height={100} alt="logo" />
+          </Link>
 
           <ul className="md:flex gap-5 hidden">
             {NavItems.map((item) => (
