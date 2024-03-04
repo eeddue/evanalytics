@@ -4,6 +4,7 @@ import React from "react";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { cn } from "@/lib/utils";
 
 const options = ["Game", "1st Half", "2nd Half", "1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter"];
 const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline", "Win Prob.", ""];
@@ -42,8 +43,8 @@ function NbaOdds() {
         <Table className="overflow-x-scroll">
           <TableHeader>
             <TableRow>
-              {tableHeaders.map((head) => (
-                <TableHead key={head} className="text-center text-black font-bold">
+              {tableHeaders.map((head, i) => (
+                <TableHead key={head} className={cn("text-black font-bold", i !== 1 && "text-center")}>
                   {head}
                 </TableHead>
               ))}
