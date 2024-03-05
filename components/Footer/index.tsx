@@ -55,7 +55,7 @@ function Footer() {
     <footer className="w-full bg-[#222] top-0 stickyflex p-10 text-gray-400">
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
         <div className="">
-          <img src="/images/logo.webp" className="object-contain" alt="" />
+          <img src="/images/logo.png" className="object-contain" alt="" />
 
           <ul className="flex flex-col">
             <Link className="text-sm mt-4" href="/terms-and-conditions">

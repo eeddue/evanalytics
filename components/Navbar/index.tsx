@@ -74,7 +74,7 @@ function Navbar() {
       <header className="flex justify-between items-center pagew p-3">
         <div className="flex space-x-7 items-center">
           <Link href="/">
-            <Image src="/images/logo.webp" width={100} height={100} alt="logo" />
+            <img src="/images/logo.png" className="w-[70px] h-[70px] object-cover" alt="logo" />
           </Link>
 
           <ul className="md:flex gap-5 hidden">
