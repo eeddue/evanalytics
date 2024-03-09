@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomQueryClient from "@/components/CustomQueryClient";
+import { Fragment } from "react";
 
 const font = Nunito({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={font.className}>
         <CustomQueryClient>
           <Navbar />
-          {children}
+          <div className="flex-grow min-h-[60vh]">{children}</div>
           <Footer />
         </CustomQueryClient>
       </body>
