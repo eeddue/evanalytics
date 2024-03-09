@@ -21,8 +21,6 @@ const getNtlEvents = async () => {
 function MlbOdds() {
   const { data: events } = useQuery({ queryKey: ["nfl"], queryFn: getNtlEvents });
 
-  console.log(events);
-
   return (
     <div>
       <section className="p-3 border-b-2 border-border bg-muted flex justify-center w-full">

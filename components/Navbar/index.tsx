@@ -2,7 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { MenuIcon } from "lucide-react";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -74,7 +82,7 @@ function Navbar() {
       <header className="flex justify-between items-center pagew p-3">
         <div className="flex space-x-7 items-center">
           <Link href="/">
-            <img src="/images/icon.png" className="w-[50px] h-[50px] object-cover" alt="logo" />
+            <img src="/images/icon.png" className="w-[40px] md:w-[50px] h-[40px] md:h-[50px] object-cover" alt="logo" />
           </Link>
 
           <ul className="md:flex gap-5 hidden">
@@ -120,18 +128,20 @@ function Navbar() {
             </SheetTrigger>
             <SheetContent className="flex flex-col gap-4">
               <SheetHeader className="border-b border-border pb-2">
-                <SheetTitle>Evanalytics</SheetTitle>
-                <SheetDescription>Bet like a Pro</SheetDescription>
+                <SheetTitle className="text-primary">Shades Of Shape</SheetTitle>
+                <SheetDescription>Bet with confidence. Win with pride.</SheetDescription>
               </SheetHeader>
               {[...NavItems, ...RightNavItems].map((item, i) => (
                 <Accordion key={item.href} type="single" collapsible>
                   <AccordionItem value={i.toString()}>
-                    <AccordionTrigger>{item.name}</AccordionTrigger>
+                    <AccordionTrigger className="hover:text-primary">{item.name}</AccordionTrigger>
                     <AccordionContent className="flex flex-col gap-2 ml-4">
                       {item.links.map((link) => (
-                        <Link key={link.link} href={link.link} className="text-sm hover:font-bold">
-                          {link.title}
-                        </Link>
+                        <SheetClose asChild key={link.link}>
+                          <Link href={link.link} className="text-sm hover:font-bold hover:text-primary">
+                            {link.title}
+                          </Link>
+                        </SheetClose>
                       ))}
                     </AccordionContent>
                   </AccordionItem>

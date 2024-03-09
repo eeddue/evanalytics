@@ -9,7 +9,7 @@ function MlbLineService() {
         <p className="text-lg">Line Service - MLB</p>
       </section>
 
-      <div className="p-2">
+      <div className="p-2 pagew mx-auto">
         <p className="text-xs">
           EV Analytics is currently in a beta phase. We welcome all feedback you have on our products, particularly in
           terms of usability. Our aim is to create products perfectly tailored to our users&apos; needs. Please email us
