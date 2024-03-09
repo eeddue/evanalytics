@@ -51,9 +51,9 @@ function NbaOdds() {
       </section>
 
       <div className="pagew mx-auto py-10">
-        <div className="flex gap-4">
+        <div className="flex gap-4 overflow-x-scroll px-2.5">
           {options.map((option) => (
-            <button className="text-xs" key={option}>
+            <button className="text-xs text-nowrap" key={option}>
               {option}
             </button>
           ))}
@@ -68,7 +68,7 @@ function NbaOdds() {
             <TableHeader>
               <TableRow>
                 {tableHeaders.map((head, i) => (
-                  <TableHead key={head} className={cn("text-black font-bold", i !== 1 && "text-center")}>
+                  <TableHead key={head} className={cn("text-black font-bold text-nowrap", i !== 1 && "text-center")}>
                     {head}
                   </TableHead>
                 ))}
@@ -79,7 +79,7 @@ function NbaOdds() {
                 groupedEvents().map((group: any) => (
                   <Fragment key={group.playDay}>
                     <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
-                      <TableCell colSpan={7} className="font-bold text-[16px] p-1 pl-5">
+                      <TableCell colSpan={7} className="font-bold text-[16px] p-1 pl-5 text-nowrap">
                         {moment(group.playDay).format("llll").toString().slice(0, 17)}
                       </TableCell>
                     </TableRow>
@@ -87,12 +87,12 @@ function NbaOdds() {
                     {group.events.length &&
                       group.events.map((event: any) => (
                         <TableRow key={event.id}>
-                          <TableCell className="text-xs text-center">
+                          <TableCell className="text-xs text-center text-nowrap">
                             {moment(new Date(event.commence_time)).format("LT")}
                           </TableCell>
                           <TableCell>
-                            <p>{event.home_team}</p>
-                            <p>{event.away_team}</p>
+                            <p className="text-nowrap">{event.home_team}</p>
+                            <p className="text-nowrap">{event.away_team}</p>
                           </TableCell>
                           <TableCell className="text-xs text-center">
                             <p>{event.bookmakers[0].markets[1].outcomes[0].price}</p>

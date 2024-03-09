@@ -28,9 +28,9 @@ function NflOdds() {
       </section>
 
       <div className="pagew mx-auto py-10">
-        <div className="flex gap-4">
+        <div className="flex gap-4 px-2.5 overflow-x-scroll">
           {options.map((option) => (
-            <button className="text-xs" key={option}>
+            <button className="text-xs text-nowrap" key={option}>
               {option}
             </button>
           ))}
@@ -42,7 +42,7 @@ function NflOdds() {
           <TableHeader>
             <TableRow>
               {tableHeaders.map((head) => (
-                <TableHead key={head} className="text-center text-black font-bold">
+                <TableHead key={head} className="text-center text-black font-bold text-nowrap">
                   {head}
                 </TableHead>
               ))}

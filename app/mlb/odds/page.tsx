@@ -28,7 +28,7 @@ function MlbOdds() {
       </section>
 
       <div className="pagew mx-auto py-10">
-        <div className="flex gap-4">
+        <div className="flex gap-4 px-2.5">
           {options.map((option) => (
             <button className="text-xs" key={option}>
               {option}
@@ -42,7 +42,7 @@ function MlbOdds() {
           <TableHeader>
             <TableRow>
               {tableHeaders.map((head) => (
-                <TableHead key={head} className="text-center font-bold">
+                <TableHead key={head} className="text-center font-bold text-nowrap">
                   {head}
                 </TableHead>
               ))}

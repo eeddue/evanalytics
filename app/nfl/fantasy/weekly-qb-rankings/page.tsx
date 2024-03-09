@@ -84,8 +84,8 @@ function NflWeeklyRanking() {
 
       {/* Data table */}
       <Table className="overflow-x-scroll">
-        <TableHeader className="bg-primary">
-          <TableRow>
+        <TableHeader>
+          <TableRow className="bg-primary hover:bg-primary">
             {tableHeaders.map((head) => (
               <TableHead key={head} className="text-xs text-center text-white">
                 {head}

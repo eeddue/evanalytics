@@ -55,7 +55,7 @@ function Footer() {
     <footer className="w-full bg-[#222] top-0 stickyflex p-10 text-gray-400">
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
         <div className="">
-          <img src="/images/logo.png" className="object-contain w-[150px] h-[150px]" alt="" />
+          <img src="/images/logo.png" className="mx-auto md:m-0 object-contain w-[150px] h-[150px]" alt="" />
 
           <ul className="flex flex-col">
             <Link className="text-sm mt-4" href="/terms-and-conditions">
@@ -81,7 +81,7 @@ function Footer() {
             <div className="flex flex-col col-span-1" key={section.title}>
               <p className="text-bold text-white">{section.title}</p>
               {section.links.map((link) => (
-                <Link className="text-sm mt-4" href={link.href} key={link.href}>
+                <Link className="text-sm mt-4 hover:text-primary" href={link.href} key={link.href}>
                   {link.title}
                 </Link>
               ))}
