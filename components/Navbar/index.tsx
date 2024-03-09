@@ -126,7 +126,7 @@ function Navbar() {
             <SheetTrigger className="md:hidden">
               <MenuIcon />
             </SheetTrigger>
-            <SheetContent className="flex flex-col gap-4">
+            <SheetContent className="flex flex-col gap-4 overflow-y-scroll">
               <SheetHeader className="border-b border-border pb-2">
                 <SheetTitle className="text-primary">Shades Of Shape</SheetTitle>
                 <SheetDescription>Bet with confidence. Win with pride.</SheetDescription>
