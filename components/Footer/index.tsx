@@ -74,20 +74,6 @@ function Footer() {
               Contact us
             </Link>
           </ul>
-          <div className="flex gap-3 mt-3">
-            <Link
-              href="/"
-              className="w-[40px] h-[40px] rounded-full relative bg-white flex items-center justify-center"
-            >
-              <Image src="/images/twitter.png" width={25} height={25} alt="" />
-            </Link>
-            <Link
-              href="/"
-              className="w-[40px] h-[40px] rounded-full relative bg-white flex items-center justify-center"
-            >
-              <Image src="/images/linkedin.png" width={25} height={25} alt="" />
-            </Link>
-          </div>
         </div>
 
         {SECTIONS.map((section) => {
