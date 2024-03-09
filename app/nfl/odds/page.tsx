@@ -24,7 +24,7 @@ function NflOdds() {
   return (
     <div>
       <section className="p-3 border-b-2 border-border bg-muted flex justify-center w-full">
-        <p className="text-lg">NFL Odds and Live Movement</p>
+        <p className="text-lg text-primary">NFL Odds and Live Movement</p>
       </section>
 
       <div className="pagew mx-auto py-10">

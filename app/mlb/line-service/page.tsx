@@ -6,7 +6,7 @@ function MlbLineService() {
   return (
     <div>
       <section className="p-3 border-b-2 border-border bg-muted flex justify-center w-full">
-        <p className="text-lg">Line Service - MLB</p>
+        <p className="text-lg text-primary">Line Service - MLB</p>
       </section>
 
       <div className="p-2">

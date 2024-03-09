@@ -47,7 +47,7 @@ function NbaOdds() {
   return (
     <div>
       <section className="p-3 border-b-2 border-border bg-muted flex justify-center w-full">
-        <p className="text-lg">NBA Odds and Live Movement</p>
+        <p className="text-lg text-primary">NBA Odds and Live Movement</p>
       </section>
 
       <div className="pagew mx-auto py-10">
