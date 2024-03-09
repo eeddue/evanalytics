@@ -47,7 +47,7 @@ function NbaOdds() {
   return (
     <div>
       <section className="p-3 border-b-2 border-border bg-muted flex justify-center w-full">
-        <p className="text-lg text-primary">NBA Odds and Live Movement</p>
+        <p className="text-lg">NBA Odds and Live Movement</p>
       </section>
 
       <div className="pagew mx-auto py-10">
@@ -78,7 +78,7 @@ function NbaOdds() {
               {Boolean(groupedEvents()) &&
                 groupedEvents().map((group: any) => (
                   <Fragment key={group.playDay}>
-                    <TableRow className="p-0 hover:bg-[#003556] text-white w-full bg-[#003556] font-bold">
+                    <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
                       <TableCell colSpan={7} className="font-bold text-[16px] p-1 pl-5">
                         {moment(group.playDay).format("llll").toString().slice(0, 17)}
                       </TableCell>
@@ -87,22 +87,22 @@ function NbaOdds() {
                     {group.events.length &&
                       group.events.map((event: any) => (
                         <TableRow key={event.id}>
-                          <TableCell className="text-center">
+                          <TableCell className="text-xs text-center">
                             {moment(new Date(event.commence_time)).format("LT")}
                           </TableCell>
                           <TableCell>
                             <p>{event.home_team}</p>
                             <p>{event.away_team}</p>
                           </TableCell>
-                          <TableCell className="text-center">
+                          <TableCell className="text-xs text-center">
                             <p>{event.bookmakers[0].markets[1].outcomes[0].price}</p>
                             <p>{event.bookmakers[0].markets[1].outcomes[1].price}</p>
                           </TableCell>
-                          <TableCell className="text-center">
+                          <TableCell className="text-xs text-center">
                             <p>o{event.bookmakers[0].markets[2].outcomes[0].point}</p>
                             <p>u{event.bookmakers[0].markets[2].outcomes[1].point}</p>
                           </TableCell>
-                          <TableCell className="text-center">
+                          <TableCell className="text-xs text-center">
                             <p>{event.bookmakers[0].markets[0].outcomes[0].price}</p>
                             <p>{event.bookmakers[0].markets[0].outcomes[1].price}</p>
                           </TableCell>

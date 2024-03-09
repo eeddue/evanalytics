@@ -24,7 +24,7 @@ function NflOdds() {
   return (
     <div>
       <section className="p-3 border-b-2 border-border bg-muted flex justify-center w-full">
-        <p className="text-lg text-primary">NFL Odds and Live Movement</p>
+        <p className="text-lg">NFL Odds and Live Movement</p>
       </section>
 
       <div className="pagew mx-auto py-10">
@@ -49,7 +49,7 @@ function NflOdds() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow className="p-0 hover:bg-[#003556] text-white w-full bg-[#003556] font-bold">
+            <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
               <TableCell colSpan={7} className="text-lg font-bold p-1">
                 Sunday, February 11, 2024
               </TableCell>

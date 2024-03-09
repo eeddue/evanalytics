@@ -167,7 +167,7 @@ function NbaStatsSpread() {
           ) : (
             <Table className="overflow-x-scroll border-border border-[1px] mt-5">
               <TableHeader className="bg-primary">
-                <TableRow>
+                <TableRow className="hover:bg-primary">
                   {tableHeaders.map((head, i) => (
                     <TableHead key={head} className={cn("font-bold text-white text-sm")}>
                       {head}

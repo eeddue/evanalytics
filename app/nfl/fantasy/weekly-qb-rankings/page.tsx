@@ -28,7 +28,7 @@ function NflWeeklyRanking() {
 
   return (
     <div className="pagew mx-auto p-5 space-y-4">
-      <h1 className="text-2xl text-pprimary">Weekly Fantasy Rankings</h1>
+      <h1 className="text-2xl text-primary">Weekly Fantasy Rankings</h1>
       <p className="text-xs">
         EV Analytics is currently in a beta phase. We welcome all feedback you have on our products, particularly in
         terms of usability. Our aim is to create products perfectly tailored to our users&apos; needs. Please email us
@@ -47,7 +47,7 @@ function NflWeeklyRanking() {
           <button
             onClick={() => setSelectedPos(pos)}
             key={pos}
-            className={cn("text-xs bg-muted px-3", selectedPos === pos && "bg-pprimary text-white")}
+            className={cn("text-xs bg-muted px-3", selectedPos === pos && "bg-primary text-white")}
           >
             {pos}
           </button>
@@ -61,7 +61,7 @@ function NflWeeklyRanking() {
           <button
             onClick={() => setSelectedTeam(team)}
             key={team}
-            className={cn("text-xs bg-muted px-3", selectedTeam === team && "bg-pprimary text-white")}
+            className={cn("text-xs bg-muted px-3", selectedTeam === team && "bg-primary text-white")}
           >
             {team}
           </button>
@@ -75,7 +75,7 @@ function NflWeeklyRanking() {
           <button
             onClick={() => setSelectedGame(game)}
             key={game}
-            className={cn("text-xs bg-muted px-3", selectedGame === game && "bg-pprimary text-white")}
+            className={cn("text-xs bg-muted px-3", selectedGame === game && "bg-primary text-white")}
           >
             {game}
           </button>
@@ -84,7 +84,7 @@ function NflWeeklyRanking() {
 
       {/* Data table */}
       <Table className="overflow-x-scroll">
-        <TableHeader className="bg-pprimary">
+        <TableHeader className="bg-primary">
           <TableRow>
             {tableHeaders.map((head) => (
               <TableHead key={head} className="text-xs text-center text-white">
