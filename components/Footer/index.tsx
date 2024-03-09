@@ -4,31 +4,34 @@ import React from "react";
 
 const SECTIONS = [
   {
+    title: "",
+    links: [
+      { title: "Weekly Rankings", href: "/terms-and-conditions" },
+      { title: "Privacy policy", href: "/privacy-policy" },
+      { title: "Careers", href: "/careers" },
+      { title: "About Us", href: "/about-us" },
+      { title: "Contact Us", href: "/contact-us" },
+    ],
+  },
+  {
     title: "NFL",
     links: [
-      { title: "Real-Time Odds", href: "/nfl/odds" },
-      { title: "Betting Models", href: "/nfl/models/players" },
-      { title: "Betting Stats", href: "/nfl/stats/spread" },
-      { title: "Winning Insights", href: "/nfl/writenow/player-props" },
-      { title: "Fantasy", href: "/nfl/fantasy/weekly-qb-rankings" },
+      { title: "Weekly Rankings", href: "/nfl/fantasy/weekly-qb-rankings" },
+      { title: "Line history", href: "/nfl/odds" },
     ],
   },
   {
     title: "MLB",
     links: [
-      { title: "Real-Time Odds", href: "/mlb/odds" },
-      { title: "Betting Models", href: "/mlb/models/players" },
-      { title: "Betting Stats", href: "/mlb/stats/spread" },
-      { title: "Leaderboards", href: "/mlb/leaderboard/projections-totals" },
-      { title: "Reasearch Data", href: "/mlb/research/statscast-correlations" },
+      { title: "Line History", href: "/mlb/odds" },
+      { title: "Line Service", href: "/mlb/line-service" },
     ],
   },
   {
     title: "NBA",
     links: [
-      { title: "Real-Time Odds", href: "/nba/odds" },
-      { title: "Betting Models", href: "/nba/models/players" },
-      { title: "Betting Stats", href: "/nba/stats/spread" },
+      { title: "Line History", href: "/nba/stats/spread" },
+      { title: "Game Odds", href: "/nba/odds" },
     ],
   },
   {
@@ -41,11 +44,8 @@ const SECTIONS = [
   {
     title: "Products",
     links: [
-      { title: "Write now", href: "/products/writenow" },
-      { title: "Betting Models", href: "/products/betting-models" },
       { title: "Real Time Odds", href: "/products/real-time-odds" },
       { title: "Betting Stats", href: "/products/betting-stats" },
-      { title: "Business Solutions", href: "/products/business-solutions" },
     ],
   },
 ];
@@ -53,32 +53,12 @@ const SECTIONS = [
 function Footer() {
   return (
     <footer className="w-full bg-[#222] top-0 stickyflex p-10 text-gray-400">
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
-        <div className="">
-          <img src="/images/logo.png" className="mx-auto md:m-0 object-contain w-[150px] h-[150px]" alt="" />
-
-          <ul className="flex flex-col">
-            <Link className="text-sm mt-4" href="/terms-and-conditions">
-              Terms & conditions
-            </Link>
-            <Link className="text-sm mt-4" href="/privacy-policy">
-              Privacy policy
-            </Link>
-            <Link className="text-sm mt-4" href="/carees">
-              Careers
-            </Link>
-            <Link className="text-sm mt-4" href="/about-us">
-              About us
-            </Link>
-            <Link className="text-sm mt-4" href="/Contact us">
-              Contact us
-            </Link>
-          </ul>
-        </div>
+      <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-5">
+        <img src="/images/logo.png" className="mx-auto md:m-0 object-contain w-[150px] h-[150px]" alt="" />
 
         {SECTIONS.map((section) => {
           return (
-            <div className="flex flex-col col-span-1" key={section.title}>
+            <div className="flex flex-col" key={section.title}>
               <p className="text-bold text-white">{section.title}</p>
               {section.links.map((link) => (
                 <Link className="text-sm mt-4 hover:text-primary" href={link.href} key={link.href}>

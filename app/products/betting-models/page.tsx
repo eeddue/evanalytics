@@ -1,7 +1,7 @@
 import React from "react";
 
 function BettingModels() {
-  return <div>BettingModels</div>;
+  return <div className="pagew mx-auto">BettingModels</div>;
 }
 
 export default BettingModels;

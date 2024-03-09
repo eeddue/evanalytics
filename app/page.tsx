@@ -4,20 +4,20 @@ import Link from "next/link";
 
 const ListItems = [
   {
-    title: "Betting Models",
-    desc: "Achieve more profitable results by leveraging powerful analytics. Sophisticated betting models handicap the true value of a betting opportunity.",
+    title: "SmartBet Insights",
+    desc: "Gain a competitive edge with advanced analytics. Real-time odds and historical stats for smarter betting decisions.",
     img: "/images/betting-models.png",
     href: "/products/betting-models",
   },
   {
-    title: "Real-time odds",
-    desc: "Shop game odds, team odds, and player prop odds. Identify inefficiencies in the markets and track line movement for deeper insight.",
+    title: "OddsMaster Pro",
+    desc: "Elevate your game with real-time odds tracking.Uncover value opportunities and ride the waves of profitability.",
     img: "/images/realtime-odds.png",
     href: "/products/real-time-odds",
   },
   {
-    title: "Betting stats",
-    desc: "Explore historical betting results to identify betting trends and profitability. Includes a full suite of ATS stats for a wide range of odds.",
+    title: "StatEdge Lite",
+    desc: "Elevate your game with real-time odds tracking.Uncover value opportunities and ride the waves of profitability.",
     img: "/images/betting-stats.png",
     href: "/products/betting-stats",
   },
@@ -49,19 +49,6 @@ export default function Home() {
             </div>
           );
         })}
-      </section>
-
-      <section className="p-2.5 flex flex-col items-center px-10">
-        <h2 className="text-2xl text-primary">Our data is trusted by;</h2>
-        <hr />
-
-        <div className="relative mt-2.5">
-          <img
-            src="/images/trustees.webp"
-            className="object-contain filter grayscale border-t border-t-black pt-2.5"
-            alt=""
-          />
-        </div>
       </section>
     </main>
   );

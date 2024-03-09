@@ -1,7 +1,7 @@
 import React from "react";
 
 function WriteNow() {
-  return <div>WriteNow</div>;
+  return <div className="pagew mx-auto">WriteNow</div>;
 }
 
 export default WriteNow;

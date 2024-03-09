@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import SignInButton from "./SignInButton";
 
 const NavItems = [
   {
@@ -120,7 +121,7 @@ function Navbar() {
               </HoverCard>
             ))}
           </ul>
-          <button>Login</button>
+          <SignInButton />
 
           <Sheet>
             <SheetTrigger className="md:hidden">

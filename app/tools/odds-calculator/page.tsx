@@ -1,7 +1,7 @@
 import React from "react";
 
 function OddsCalculator() {
-  return <div>OddsCalculator</div>;
+  return <div className="pagew mx-auto">OddsCalculator</div>;
 }
 
 export default OddsCalculator;
