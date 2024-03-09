@@ -26,15 +26,13 @@ const ListItems = [
 export default function Home() {
   return (
     <main className="">
-      <div className="h-[40vh] w-full bg-red-400 relative text-center">
-        <Image src="/images/background.webp" layout="fill" className="w-full h-full object-cover absolute" alt="" />
+      <div className="h-[90vh] w-full bg-red-400 relative text-center">
+        <Image src="/images/background.jpeg" layout="fill" className="w-full h-full object-cover absolute" alt="" />
 
         <div className="absolute w-full h-full flex flex-col space-y-6 items-center justify-center text-white bg-gradient-to-r from-[#000] to-[#00000099] p-2.5">
-          <p className="text-4xl">
-            Bet Like A <span className="text-cblue">Pro®</span>
-          </p>
-          <p className="text-3xl">Betting models. Real-time odds. Betting stats.</p>
-          <Button className="rounded-full bg-cblue hover:bg-cblue w-[200px] h-[50px]">Start winning</Button>
+          <p className="text-4xl">Bet smart. Win big.</p>
+          <p className="text-3xl text-primary">Bet with confidence. Win with pride.</p>
+          <Button className="rounded-full bg-primary hover:bg-primary w-[200px] h-[50px]">Start winning</Button>
         </div>
       </div>
 
@@ -46,7 +44,7 @@ export default function Home() {
               <h1 className="bold text-2xl">{item.title}</h1>
               <p className="text-sm">{item.desc}</p>
               <Link href={item.href}>
-                <Button className="bg-cblue hover:bg-cblue rounded-full">Learn more</Button>
+                <Button className="bg-primary hover:bg-primary rounded-full">Learn more</Button>
               </Link>
             </div>
           );
@@ -54,7 +52,7 @@ export default function Home() {
       </section>
 
       <section className="p-2.5 flex flex-col items-center px-10">
-        <h2 className="text-2xl text-cblue">Our data is trusted by;</h2>
+        <h2 className="text-2xl text-primary">Our data is trusted by;</h2>
         <hr />
 
         <div className="relative mt-2.5">

@@ -70,20 +70,22 @@ const RightNavItems = [
 
 function Navbar() {
   return (
-    <nav className="w-full bg-black top-0 sticky text-white flex justify-center z-50">
+    <nav className="w-full border-border border-b-2 bg-white top-0 sticky flex justify-center z-50">
       <header className="flex justify-between items-center pagew p-3">
         <div className="flex space-x-7 items-center">
           <Link href="/">
-            <img src="/images/logo.png" className="w-[70px] h-[70px] object-cover" alt="logo" />
+            <img src="/images/icon.png" className="w-[50px] h-[50px] object-cover" alt="logo" />
           </Link>
 
           <ul className="md:flex gap-5 hidden">
             {NavItems.map((item) => (
               <HoverCard key={item.href}>
-                <HoverCardTrigger className="cursor-pointer">{item.name}</HoverCardTrigger>
-                <HoverCardContent className="flex flex-col p-2 gap-3 bg-white">
+                <HoverCardTrigger className="cursor-pointer hover:text-primary hover:font-bold">
+                  {item.name}
+                </HoverCardTrigger>
+                <HoverCardContent className="flex flex-col p-2 gap-3">
                   {item.links.map((link) => (
-                    <Link key={link.link} href={link.link} className="text-sm hover:font-bold">
+                    <Link key={link.link} href={link.link} className="text-sm hover:font-bold hover:text-primary">
                       {link.title}
                     </Link>
                   ))}
@@ -97,10 +99,12 @@ function Navbar() {
           <ul className="md:flex gap-5 hidden">
             {RightNavItems.map((item) => (
               <HoverCard key={item.href}>
-                <HoverCardTrigger className="cursor-pointer">{item.name}</HoverCardTrigger>
+                <HoverCardTrigger className="cursor-pointer hover:text-primary hover:font-bold">
+                  {item.name}
+                </HoverCardTrigger>
                 <HoverCardContent className="flex flex-col p-2 gap-3 bg-white">
                   {item.links.map((link) => (
-                    <Link key={link.link} href={link.link} className="text-sm hover:font-bold">
+                    <Link key={link.link} href={link.link} className="text-sm hover:font-bold hover:text-primary">
                       {link.title}
                     </Link>
                   ))}

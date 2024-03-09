@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomQueryClient from "@/components/CustomQueryClient";
 
-const poppins = Open_Sans({ subsets: ["latin"], weight: ["300", "400", "500"] });
+const font = Nunito({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 export const metadata: Metadata = {
   title: "EV Analytics - Bet Like a Pro",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={font.className}>
         <CustomQueryClient>
           <Navbar />
           {children}
