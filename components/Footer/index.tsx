@@ -66,18 +66,18 @@ const SECTIONS = [
 function Footer() {
   return (
     <footer className="w-full bg-[#222] top-0 stickyflex p-10 text-gray-400">
-      <section className="grid grid-cols-7 gap-2.5">
-        <div className="col-span">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-7">
+        <div className="cols-span-1">
           <img src="/images/logo.png" className="mx-auto md:m-0 object-contain w-[150px] h-[150px]" alt="" />
         </div>
 
-        <div className="grid col-span-6 grid-cols-6 gap-2.5">
+        <div className="grid col-span-1 md:col-span-3 xl:col-span-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
           {SECTIONS.map((section) => {
             return (
               <div className="flex flex-col col-span-1" key={section.title}>
                 <p className="text-bold text-white">{section.title}</p>
                 {section.links.map((link) => (
-                  <Link className="text-sm mt-4 hover:text-primary" href={link.href} key={link.href}>
+                  <Link className="text-sm mt-2 hover:text-primary" href={link.href} key={link.href}>
                     {link.title}
                   </Link>
                 ))}
