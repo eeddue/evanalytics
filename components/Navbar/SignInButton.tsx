@@ -8,12 +8,13 @@ function SignInButton() {
   const { signInWithGoogle, signOut, user } = useAppContext();
 
   if (!user) return <button onClick={signInWithGoogle}>Login</button>;
-  
-  return (
-    <button onClick={signOut} className="w-[40px] h-[40px] rounded-full bg-muted overflow-hidden">
-      <Image src={user.photoURL} width={40} height={40} alt="" />
-    </button>
-  );
+
+  if (user.photoURL)
+    return (
+      <button onClick={signOut} className="w-[40px] h-[40px] rounded-full bg-muted overflow-hidden">
+        <Image src={user.photoURL} width={40} height={40} alt="" />
+      </button>
+    );
 }
 
 export default SignInButton;
