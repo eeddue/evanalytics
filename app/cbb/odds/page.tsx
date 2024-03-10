@@ -1,7 +1,7 @@
 import React from "react";
 
 function CbbOdds() {
-  return <div>CbbOdds</div>;
+  return <div className="pagew mx-auto">CbbOdds</div>;
 }
 
 export default CbbOdds;

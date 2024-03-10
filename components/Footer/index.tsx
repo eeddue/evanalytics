@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -6,7 +5,7 @@ const SECTIONS = [
   {
     title: "",
     links: [
-      { title: "Weekly Rankings", href: "/terms-and-conditions" },
+      { title: "Terms & conditions", href: "/terms-and-conditions" },
       { title: "Privacy policy", href: "/privacy-policy" },
       { title: "Careers", href: "/careers" },
       { title: "About Us", href: "/about-us" },
@@ -35,6 +34,20 @@ const SECTIONS = [
     ],
   },
   {
+    title: "CBB",
+    links: [
+      { title: "Line History", href: "/cbb/stats/spread" },
+      { title: "Game Odds", href: "/cbb/odds" },
+    ],
+  },
+  {
+    title: "CFB",
+    links: [
+      { title: "Line History", href: "/cfb/stats/spread" },
+      { title: "Game Odds", href: "/cfb/odds" },
+    ],
+  },
+  {
     title: "Tools",
     links: [
       { title: "Prayer Prop Calculator", href: "/tools/player-prop-calculator" },
@@ -44,8 +57,8 @@ const SECTIONS = [
   {
     title: "Products",
     links: [
-      { title: "Real Time Odds", href: "/products/real-time-odds" },
-      { title: "Betting Stats", href: "/products/betting-stats" },
+      { title: "Betting Models", href: "/products/betting-models" },
+      { title: "Writenow", href: "/products/writenow" },
     ],
   },
 ];
@@ -53,21 +66,25 @@ const SECTIONS = [
 function Footer() {
   return (
     <footer className="w-full bg-[#222] top-0 stickyflex p-10 text-gray-400">
-      <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-5">
-        <img src="/images/logo.png" className="mx-auto md:m-0 object-contain w-[150px] h-[150px]" alt="" />
+      <section className="grid grid-cols-7 gap-2.5">
+        <div className="col-span">
+          <img src="/images/logo.png" className="mx-auto md:m-0 object-contain w-[150px] h-[150px]" alt="" />
+        </div>
 
-        {SECTIONS.map((section) => {
-          return (
-            <div className="flex flex-col" key={section.title}>
-              <p className="text-bold text-white">{section.title}</p>
-              {section.links.map((link) => (
-                <Link className="text-sm mt-4 hover:text-primary" href={link.href} key={link.href}>
-                  {link.title}
-                </Link>
-              ))}
-            </div>
-          );
-        })}
+        <div className="grid col-span-6 grid-cols-6 gap-2.5">
+          {SECTIONS.map((section) => {
+            return (
+              <div className="flex flex-col col-span-1" key={section.title}>
+                <p className="text-bold text-white">{section.title}</p>
+                {section.links.map((link) => (
+                  <Link className="text-sm mt-4 hover:text-primary" href={link.href} key={link.href}>
+                    {link.title}
+                  </Link>
+                ))}
+              </div>
+            );
+          })}
+        </div>
       </section>
     </footer>
   );

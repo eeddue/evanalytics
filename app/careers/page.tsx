@@ -1,7 +1,7 @@
 import React from "react";
 
 function Careers() {
-  return <div className="pagew mx-ato">Careers</div>;
+  return <div className="pagew mx-auto">Careers</div>;
 }
 
 export default Careers;

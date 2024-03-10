@@ -1,7 +1,7 @@
 import React from "react";
 
 function CfbStatsSpread() {
-  return <div>CfbStatsSpread</div>;
+  return <div className="pagew mx-auto">CfbStatsSpread</div>;
 }
 
 export default CfbStatsSpread;
