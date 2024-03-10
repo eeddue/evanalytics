@@ -34,17 +34,17 @@ const SECTIONS = [
     ],
   },
   {
-    title: "CBB",
+    title: "NCAAB",
     links: [
-      { title: "Line History", href: "/cbb/stats/spread" },
-      { title: "Game Odds", href: "/cbb/odds" },
+      { title: "Line History", href: "/ncaab/stats/spread" },
+      { title: "Game Odds", href: "/ncaab/odds" },
     ],
   },
   {
-    title: "CFB",
+    title: "NCAAF",
     links: [
-      { title: "Line History", href: "/cfb/stats/spread" },
-      { title: "Game Odds", href: "/cfb/odds" },
+      { title: "Line History", href: "/ncaaf/stats/spread" },
+      { title: "Game Odds", href: "/ncaaf/odds" },
     ],
   },
   {

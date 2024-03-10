@@ -12,7 +12,7 @@ function CfbOdds() {
   });
 
   return (
-    <div className="pagew mx-auto">
+    <div className="">
       <section className="p-3 border-b-2 border-border bg-muted flex justify-center w-full">
         <p className="text-lg">College Football Odds and Live Movement</p>
       </section>

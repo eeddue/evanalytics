@@ -41,19 +41,19 @@ const NavItems = [
     ],
   },
   {
-    name: "CBB",
-    href: "/cbb",
+    name: "NCAAB",
+    href: "/ncaab",
     links: [
-      { link: "/cbb/odds", title: "Line History" },
-      { link: "/cbb/stats/spread", title: "Game Odds" },
+      { link: "/ncaab/odds", title: "Line History" },
+      { link: "/ncaab/stats/spread", title: "Game Odds" },
     ],
   },
   {
-    name: "CFB",
-    href: "/cfb",
+    name: "NCAAF",
+    href: "/ncaaf",
     links: [
-      { link: "/cfb/odds", title: "Line History" },
-      { link: "/cfb/stats/spread", title: "Game Odds" },
+      { link: "/ncaaf/odds", title: "Line History" },
+      { link: "/ncaaf/stats/spread", title: "Game Odds" },
     ],
   },
 ];
