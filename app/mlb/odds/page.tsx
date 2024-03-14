@@ -1,25 +1,28 @@
 "use client";
 
 import React from "react";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import moment from "moment";
+import { Loader } from "lucide-react";
 
 const options = ["Game", "1st Half", "2nd Half"];
 const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline", "Win Prob.", ""];
 
-const getNtlEvents = async () => {
-  const url = `https://api.the-odds-api.com/v4/sports/baseball_mlb/odds?regions=us&markets=h2h,spreads,totals&oddsFormat=american&apiKey=${process.env.NEXT_PUBLIC_ODDS_API_KEY}`;
-  try {
-    const { data } = await axios.get(url);
-    return data;
-  } catch (error) {
-    return error;
-  }
-};
-
 function MlbOdds() {
-  const { data: events } = useQuery({ queryKey: ["nfl"], queryFn: getNtlEvents });
+  const { data: events, status } = useQuery({
+    queryKey: ["mlbEvents"],
+    queryFn: () =>
+      axios
+        .get(
+          `https://api.the-odds-api.com/v4/sports/baseball_mlb/odds?regions=us&markets=h2h,spreads,totals&oddsFormat=american&apiKey=${process.env.NEXT_PUBLIC_ODDS_API_KEY}`
+        )
+        .then(({ data }) => data)
+        .catch(() => []),
+  });
+
+  const isLoading = status === "pending";
 
   return (
     <div>
@@ -38,26 +41,58 @@ function MlbOdds() {
 
         {/* Table */}
         {/* Data table */}
-        <Table className="overflow-x-scroll">
-          <TableHeader>
-            <TableRow>
-              {tableHeaders.map((head) => (
-                <TableHead key={head} className="text-center font-bold text-nowrap">
-                  {head}
-                </TableHead>
-              ))}
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
-              <TableCell colSpan={7} className="text-lg font-bold p-1">
-                Sunday, February 11, 2024
-              </TableCell>
-            </TableRow>
+        {isLoading ? (
+          <Loader size={40} className="animate-spin self-center mt-20 mx-auto" />
+        ) : (
+          <Table className="overflow-x-scroll">
+            <TableHeader>
+              <TableRow>
+                {tableHeaders.map((head) => (
+                  <TableHead key={head} className="text-center font-bold text-nowrap">
+                    {head}
+                  </TableHead>
+                ))}
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
+                <TableCell colSpan={7} className="text-lg font-bold p-1">
+                  {moment(new Date()).format("LL")}
+                </TableCell>
+              </TableRow>
 
-            {/* {events?.length ? events.map((event) => <></>) : <p>There were no events found</p>} */}
-          </TableBody>
-        </Table>
+              {events.length ? (
+                events.map((event: any) => (
+                  <TableRow key={event.id}>
+                    <TableCell className="text-xs text-center text-nowrap">
+                      {moment(new Date(event.commence_time)).format("LT")}
+                    </TableCell>
+                    <TableCell>
+                      <p className="text-nowrap">{event.home_team}</p>
+                      <p className="text-nowrap">{event.away_team}</p>
+                    </TableCell>
+                    <TableCell className="text-xs text-center">
+                      <p>{event.bookmakers[0].markets[1]?.outcomes[0].price}</p>
+                      <p>{event.bookmakers[0].markets[1]?.outcomes[1].price}</p>
+                    </TableCell>
+                    <TableCell className="text-xs text-center">
+                      <p>o{event.bookmakers[0].markets[2]?.outcomes[0].point}</p>
+                      <p>u{event.bookmakers[0].markets[2]?.outcomes[1].point}</p>
+                    </TableCell>
+                    <TableCell className="text-xs text-center">
+                      <p>{event.bookmakers[0].markets[0]?.outcomes[0].price}</p>
+                      <p>{event.bookmakers[0].markets[0]?.outcomes[1].price}</p>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow className="text-center">
+                  <TableCell colSpan={6}>There were no events found</TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        )}
       </div>
     </div>
   );

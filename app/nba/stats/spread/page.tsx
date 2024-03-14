@@ -54,7 +54,8 @@ function NbaStatsSpread() {
             selectedSn.split("-")[0]
           }?key=b84b94e7e7084ec48dbef86df6dd82f1`
         )
-        .then(({ data }) => data),
+        .then(({ data }) => data)
+        .catch(() => []),
   });
 
   const isLoading = status === "pending";
@@ -176,7 +177,7 @@ function NbaStatsSpread() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {Boolean(events) &&
+                {events.length ? (
                   events.map((event: EventProps, index: number) => (
                     <TableRow className={cn(index % 2 === 0 && "bg-muted")} key={event.Team}>
                       <TableCell className="!p-0 text-center text-xs">{event.Season}</TableCell>
@@ -188,7 +189,12 @@ function NbaStatsSpread() {
                       <TableCell className="text-xs">{event.Season}</TableCell>
                       <TableCell className="text-xs">{event.Season}</TableCell>
                     </TableRow>
-                  ))}
+                  ))
+                ) : (
+                  <TableRow className="text-center">
+                    <TableCell colSpan={6}>There were no events found</TableCell>
+                  </TableRow>
+                )}
               </TableBody>
             </Table>
           )}

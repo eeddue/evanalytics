@@ -19,13 +19,14 @@ function NbaOdds() {
         .get(
           `https://api.the-odds-api.com/v4/sports/basketball_nba/odds?regions=us&markets=h2h,spreads,totals&oddsFormat=american&apiKey=${process.env.NEXT_PUBLIC_ODDS_API_KEY}`
         )
-        .then(({ data }) => data),
+        .then(({ data }) => data)
+        .catch(() => []),
   });
 
   const isLoading = status === "pending";
 
   const groupedEvents = () => {
-    if (Boolean(events)) {
+    if (events.length) {
       let groups: any = [];
       events.map((event: any) => {
         const foundGroup = groups.find((group: any) => group.playDay === moment(event.commence_time).format("LL"));
@@ -75,41 +76,45 @@ function NbaOdds() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {Boolean(groupedEvents()) &&
-                groupedEvents().map((group: any) => (
-                  <Fragment key={group.playDay}>
-                    <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
-                      <TableCell colSpan={7} className="font-bold text-[16px] p-1 pl-5 text-nowrap">
-                        {moment(group.playDay).format("llll").toString().slice(0, 17)}
-                      </TableCell>
-                    </TableRow>
+              {groupedEvents().map((group: any) => (
+                <Fragment key={group.playDay}>
+                  <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
+                    <TableCell colSpan={7} className="font-bold text-[16px] p-1 pl-5 text-nowrap">
+                      {moment(group.playDay).format("llll").toString().slice(0, 17)}
+                    </TableCell>
+                  </TableRow>
 
-                    {group.events.length &&
-                      group.events.map((event: any) => (
-                        <TableRow key={event.id}>
-                          <TableCell className="text-xs text-center text-nowrap">
-                            {moment(new Date(event.commence_time)).format("LT")}
-                          </TableCell>
-                          <TableCell>
-                            <p className="text-nowrap">{event.home_team}</p>
-                            <p className="text-nowrap">{event.away_team}</p>
-                          </TableCell>
-                          <TableCell className="text-xs text-center">
-                            <p>{event.bookmakers[0].markets[1].outcomes[0].price}</p>
-                            <p>{event.bookmakers[0].markets[1].outcomes[1].price}</p>
-                          </TableCell>
-                          <TableCell className="text-xs text-center">
-                            <p>o{event.bookmakers[0].markets[2].outcomes[0].point}</p>
-                            <p>u{event.bookmakers[0].markets[2].outcomes[1].point}</p>
-                          </TableCell>
-                          <TableCell className="text-xs text-center">
-                            <p>{event.bookmakers[0].markets[0].outcomes[0].price}</p>
-                            <p>{event.bookmakers[0].markets[0].outcomes[1].price}</p>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                  </Fragment>
-                ))}
+                  {group.events.length ? (
+                    group.events.map((event: any) => (
+                      <TableRow key={event.id}>
+                        <TableCell className="text-xs text-center text-nowrap">
+                          {moment(new Date(event.commence_time)).format("LT")}
+                        </TableCell>
+                        <TableCell>
+                          <p className="text-nowrap">{event.home_team}</p>
+                          <p className="text-nowrap">{event.away_team}</p>
+                        </TableCell>
+                        <TableCell className="text-xs text-center">
+                          <p>{event.bookmakers[0].markets[1].outcomes[0].price}</p>
+                          <p>{event.bookmakers[0].markets[1].outcomes[1].price}</p>
+                        </TableCell>
+                        <TableCell className="text-xs text-center">
+                          <p>o{event.bookmakers[0].markets[2].outcomes[0].point}</p>
+                          <p>u{event.bookmakers[0].markets[2].outcomes[1].point}</p>
+                        </TableCell>
+                        <TableCell className="text-xs text-center">
+                          <p>{event.bookmakers[0].markets[0].outcomes[0].price}</p>
+                          <p>{event.bookmakers[0].markets[0].outcomes[1].price}</p>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
+                    <TableRow className="text-center">
+                      <TableCell colSpan={6}>There were no events found</TableCell>
+                    </TableRow>
+                  )}
+                </Fragment>
+              ))}
             </TableBody>
           </Table>
         )}
