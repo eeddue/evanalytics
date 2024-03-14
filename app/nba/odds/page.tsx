@@ -76,16 +76,16 @@ function NbaOdds() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {groupedEvents().map((group: any) => (
-                <Fragment key={group.playDay}>
-                  <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
-                    <TableCell colSpan={7} className="font-bold text-[16px] p-1 pl-5 text-nowrap">
-                      {moment(group.playDay).format("llll").toString().slice(0, 17)}
-                    </TableCell>
-                  </TableRow>
+              {groupedEvents().length ? (
+                groupedEvents().map((group: any) => (
+                  <Fragment key={group.playDay}>
+                    <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
+                      <TableCell colSpan={7} className="font-bold text-[16px] p-1 pl-5 text-nowrap">
+                        {moment(group.playDay).format("llll").toString().slice(0, 17)}
+                      </TableCell>
+                    </TableRow>
 
-                  {group.events.length ? (
-                    group.events.map((event: any) => (
+                    {group.events.map((event: any) => (
                       <TableRow key={event.id}>
                         <TableCell className="text-xs text-center text-nowrap">
                           {moment(new Date(event.commence_time)).format("LT")}
@@ -107,14 +107,14 @@ function NbaOdds() {
                           <p>{event.bookmakers[0].markets[0].outcomes[1].price}</p>
                         </TableCell>
                       </TableRow>
-                    ))
-                  ) : (
-                    <TableRow className="text-center">
-                      <TableCell colSpan={6}>There were no events found</TableCell>
-                    </TableRow>
-                  )}
-                </Fragment>
-              ))}
+                    ))}
+                  </Fragment>
+                ))
+              ) : (
+                <TableRow className="text-center">
+                  <TableCell colSpan={6}>There were no events found</TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         )}
