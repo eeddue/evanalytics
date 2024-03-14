@@ -164,7 +164,7 @@ function NbaStatsSpread() {
 
           {/* Teams list */}
           {isLoading ? (
-            <Loader size={40} className="animate-spin self-center mt-20" />
+            <Loader size={30} className="animate-spin self-center mt-20" />
           ) : (
             <Table className="overflow-x-scroll border-border border-[1px] mt-5">
               <TableHeader className="bg-primary">

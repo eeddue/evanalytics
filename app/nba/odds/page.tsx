@@ -63,7 +63,7 @@ function NbaOdds() {
         {/* Table */}
         {/* Data table */}
         {isLoading ? (
-          <Loader size={40} className="animate-spin self-center mt-20 mx-auto" />
+          <Loader size={30} className="animate-spin self-center mt-20 mx-auto" />
         ) : (
           <Table className="overflow-x-scroll">
             <TableHeader>
