@@ -50,7 +50,7 @@ const SECTIONS = [
   {
     title: "Tools",
     links: [
-      { title: "Prayer Prop Calculator", href: "/tools/player-prop-calculator" },
+      { title: "Player Prop Calculator", href: "/tools/player-prop-calculator" },
       { title: "Odds Calculator", href: "/tools/odds-calculator" },
     ],
   },
