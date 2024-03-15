@@ -9,7 +9,7 @@ import moment from "moment";
 import { Loader } from "lucide-react";
 
 const options = ["Game", "1st Half", "2nd Half", "1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter"];
-const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline", "Win Prob.", ""];
+const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline", ];
 
 function NbaOdds() {
   const { data: events, status } = useQuery({
@@ -28,17 +28,19 @@ function NbaOdds() {
   const groupedEvents = () => {
     if (events.length) {
       let groups: any = [];
-      events.map((event: any) => {
-        const foundGroup = groups.find((group: any) => group.playDay === moment(event.commence_time).format("LL"));
-        if (foundGroup) {
-          foundGroup.events.push(event);
-        } else {
-          groups.push({
-            playDay: moment(event.commence_time).format("LL"),
-            events: [event],
-          });
-        }
-      });
+      events
+        .filter((e: any) => e.bookmakers[0].markets.length > 2)
+        .map((event: any) => {
+          const foundGroup = groups.find((group: any) => group.playDay === moment(event.commence_time).format("LL"));
+          if (foundGroup) {
+            foundGroup.events.push(event);
+          } else {
+            groups.push({
+              playDay: moment(event.commence_time).format("LL"),
+              events: [event],
+            });
+          }
+        });
 
       return groups;
     }
@@ -95,16 +97,16 @@ function NbaOdds() {
                           <p className="text-nowrap">{event.away_team}</p>
                         </TableCell>
                         <TableCell className="text-xs text-center">
-                          <p>{event.bookmakers[0].markets[1].outcomes[0].price}</p>
-                          <p>{event.bookmakers[0].markets[1].outcomes[1].price}</p>
+                          <p>{event.bookmakers[0].markets[1]?.outcomes[0].price}</p>
+                          <p>{event.bookmakers[0].markets[1]?.outcomes[1].price}</p>
                         </TableCell>
                         <TableCell className="text-xs text-center">
-                          <p>o{event.bookmakers[0].markets[2].outcomes[0].point}</p>
-                          <p>u{event.bookmakers[0].markets[2].outcomes[1].point}</p>
+                          <p>o{event.bookmakers[0].markets[2]?.outcomes[0].point}</p>
+                          <p>u{event.bookmakers[0].markets[2]?.outcomes[1].point}</p>
                         </TableCell>
                         <TableCell className="text-xs text-center">
-                          <p>{event.bookmakers[0].markets[0].outcomes[0].price}</p>
-                          <p>{event.bookmakers[0].markets[0].outcomes[1].price}</p>
+                          <p>{event.bookmakers[0].markets[0]?.outcomes[0].price}</p>
+                          <p>{event.bookmakers[0].markets[0]?.outcomes[1].price}</p>
                         </TableCell>
                       </TableRow>
                     ))}

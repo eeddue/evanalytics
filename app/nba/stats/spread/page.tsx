@@ -25,7 +25,9 @@ const seasons = ["2023-2024", "2022-2023", "2021-2022"];
 const seasonTypes = ["Season", "Regular", "Playoffs"];
 const games = ["ALL", "Last 10", "Last 5", "Last 3"];
 const sides = ["BOTH", "Home", "Away"];
-const tableHeaders = ["Season", "Season Type", "Team", "Win", "Loss", "Push", "Units", "ROI"];
+const tableHeaders = ["Season", "Season Type", "Team", "Win", "Loss", "Push"];
+
+// "Units", "ROI";
 
 type EventProps = {
   Season: string;
@@ -186,8 +188,8 @@ function NbaStatsSpread() {
                       <TableCell className="text-xs">{event.Wins}</TableCell>
                       <TableCell className="text-xs">{event.Losses}</TableCell>
                       <TableCell className="text-xs">{event.Losses}</TableCell>
-                      <TableCell className="text-xs">{event.Season}</TableCell>
-                      <TableCell className="text-xs">{event.Season}</TableCell>
+                      {/* <TableCell className="text-xs">{event.Season}</TableCell>
+                      <TableCell className="text-xs">{event.Season}</TableCell> */}
                     </TableRow>
                   ))
                 ) : (

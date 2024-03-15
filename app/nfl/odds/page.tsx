@@ -6,9 +6,10 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import { Loader } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const options = ["Game", "1st Half", "1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter"];
-const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline", "Win Prob.", ""];
+const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline"];
 
 function NflOdds() {
   const { data: events, status } = useQuery({
@@ -47,8 +48,8 @@ function NflOdds() {
           <Table className="overflow-x-scroll">
             <TableHeader>
               <TableRow>
-                {tableHeaders.map((head) => (
-                  <TableHead key={head} className="text-center font-bold text-nowrap">
+                {tableHeaders.map((head, index) => (
+                  <TableHead key={head} className={cn("font-bold text-nowrap", index !== 1 && "text-center")}>
                     {head}
                   </TableHead>
                 ))}
@@ -62,29 +63,31 @@ function NflOdds() {
               </TableRow>
 
               {events.length ? (
-                events.map((event: any) => (
-                  <TableRow key={event.id}>
-                    <TableCell className="text-xs text-center text-nowrap">
-                      {moment(new Date(event.commence_time)).format("LT")}
-                    </TableCell>
-                    <TableCell>
-                      <p className="text-nowrap">{event.home_team}</p>
-                      <p className="text-nowrap">{event.away_team}</p>
-                    </TableCell>
-                    <TableCell className="text-xs text-center">
-                      <p>{event.bookmakers[0].markets[1]?.outcomes[0].price}</p>
-                      <p>{event.bookmakers[0].markets[1]?.outcomes[1].price}</p>
-                    </TableCell>
-                    <TableCell className="text-xs text-center">
-                      <p>o{event.bookmakers[0].markets[2]?.outcomes[0].point}</p>
-                      <p>u{event.bookmakers[0].markets[2]?.outcomes[1].point}</p>
-                    </TableCell>
-                    <TableCell className="text-xs text-center">
-                      <p>{event.bookmakers[0].markets[0]?.outcomes[0].price}</p>
-                      <p>{event.bookmakers[0].markets[0]?.outcomes[1].price}</p>
-                    </TableCell>
-                  </TableRow>
-                ))
+                events
+                  .filter((e: any) => e.bookmakers[0].markets.length > 2)
+                  .map((event: any) => (
+                    <TableRow key={event.id}>
+                      <TableCell className="text-xs text-center text-nowrap">
+                        {moment(new Date(event.commence_time)).format("LT")}
+                      </TableCell>
+                      <TableCell>
+                        <p className="text-nowrap">{event.home_team}</p>
+                        <p className="text-nowrap">{event.away_team}</p>
+                      </TableCell>
+                      <TableCell className="text-xs text-center">
+                        <p>{event.bookmakers[0].markets[1]?.outcomes[0].price}</p>
+                        <p>{event.bookmakers[0].markets[1]?.outcomes[1].price}</p>
+                      </TableCell>
+                      <TableCell className="text-xs text-center">
+                        <p>o{event.bookmakers[0].markets[2]?.outcomes[0].point}</p>
+                        <p>u{event.bookmakers[0].markets[2]?.outcomes[1].point}</p>
+                      </TableCell>
+                      <TableCell className="text-xs text-center">
+                        <p>{event.bookmakers[0].markets[0]?.outcomes[0].price}</p>
+                        <p>{event.bookmakers[0].markets[0]?.outcomes[1].price}</p>
+                      </TableCell>
+                    </TableRow>
+                  ))
               ) : (
                 <TableRow className="text-center">
                   <TableCell colSpan={6}>There were no events found</TableCell>
