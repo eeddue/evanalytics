@@ -11,9 +11,9 @@ function MlbLineService() {
 
       <div className="p-2 pagew mx-auto">
         <p className="text-xs">
-          EV Analytics is currently in a beta phase. We welcome all feedback you have on our products, particularly in
-          terms of usability. Our aim is to create products perfectly tailored to our users&apos; needs. Please email us
-          at feedback@evanalytics.com or DM us on Twitter @EV_Analytics. Thank you for your support.
+          Shades of Shape is currently in a beta phase. We welcome all feedback you have on our products, particularly
+          in terms of usability. Our aim is to create products perfectly tailored to our users&apos; needs. Please email
+          us at feedback@evanalytics.com or DM us on Twitter @EV_Analytics. Thank you for your support.
         </p>
 
         <div className="flex items-center flex-wrap gap-8 my-5">

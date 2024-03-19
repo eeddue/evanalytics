@@ -54,13 +54,13 @@ const SECTIONS = [
       { title: "Odds Calculator", href: "/tools/odds-calculator" },
     ],
   },
-  {
-    title: "Products",
-    links: [
-      { title: "Betting Models", href: "/products/betting-models" },
-      { title: "Writenow", href: "/products/writenow" },
-    ],
-  },
+  // {
+  //   title: "Products",
+  //   links: [
+  //     { title: "Betting Models", href: "/products/betting-models" },
+  //     { title: "Writenow", href: "/products/writenow" },
+  //   ],
+  // },
 ];
 
 function Footer() {

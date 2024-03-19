@@ -59,14 +59,14 @@ const NavItems = [
 ];
 
 const RightNavItems = [
-  {
-    name: "Products",
-    href: "/products",
-    links: [
-      { link: "/products/writenow", title: "WriteNow" },
-      { link: "/products/betting-models", title: "Betting Models" },
-    ],
-  },
+  // {
+  //   name: "Products",
+  //   href: "/products",
+  //   links: [
+  //     { link: "/products/writenow", title: "WriteNow" },
+  //     { link: "/products/betting-models", title: "Betting Models" },
+  //   ],
+  // },
   {
     name: "Tools",
     href: "/tools",

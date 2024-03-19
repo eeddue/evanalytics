@@ -30,7 +30,7 @@ function NflWeeklyRanking() {
     <div className="pagew mx-auto p-5 space-y-4">
       <h1 className="text-2xl text-primary">Weekly Fantasy Rankings</h1>
       <p className="text-xs">
-        EV Analytics is currently in a beta phase. We welcome all feedback you have on our products, particularly in
+       Shades of shape is currently in a beta phase. We welcome all feedback you have on our products, particularly in
         terms of usability. Our aim is to create products perfectly tailored to our users&apos; needs. Please email us
         at feedback@evanalytics.com or DM us on Twitter @EV_Analytics. Thank you for your support.
       </p>
