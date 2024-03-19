@@ -1,10 +1,10 @@
 "use client";
-import { cn } from "@/lib/utils";
-import React, { useState } from "react";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { cn } from "@/lib/utils";
 import { Loader } from "lucide-react";
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const topTableTopOtions = ["Spread", "Total", "Moneyline"];
 const bootomTableTopOtions = [
@@ -172,7 +172,7 @@ function NbaStatsSpread() {
               <TableHeader className="bg-primary">
                 <TableRow className="hover:bg-primary">
                   {tableHeaders.map((head, i) => (
-                    <TableHead key={head} className="font-bold text-white text-sm">
+                    <TableHead key={head} className={cn("font-bold text-white text-sm", i > 2 && "text-center")}>
                       {head}
                     </TableHead>
                   ))}
@@ -182,12 +182,12 @@ function NbaStatsSpread() {
                 {events.length ? (
                   events.map((event: EventProps, index: number) => (
                     <TableRow className={cn(index % 2 === 0 && "bg-muted")} key={event.Team}>
-                      <TableCell className="!p-0 text-center text-xs">{event.Season}</TableCell>
+                      <TableCell className="text-xs">{event.Season}</TableCell>
                       <TableCell className="text-xs">{selectedSnType}</TableCell>
                       <TableCell className="text-xs">{event.Name}</TableCell>
-                      <TableCell className="text-xs">{event.Wins}</TableCell>
-                      <TableCell className="text-xs">{event.Losses}</TableCell>
-                      <TableCell className="text-xs">{event.Losses}</TableCell>
+                      <TableCell className="text-xs text-center">{event.Wins}</TableCell>
+                      <TableCell className="text-xs text-center">{event.Losses}</TableCell>
+                      <TableCell className="text-xs text-center">{event.Losses}</TableCell>
                       {/* <TableCell className="text-xs">{event.Season}</TableCell>
                       <TableCell className="text-xs">{event.Season}</TableCell> */}
                     </TableRow>
