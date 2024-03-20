@@ -1,10 +1,10 @@
 "use client";
-import { cn } from "@/lib/utils";
-import React, { useState } from "react";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { cn } from "@/lib/utils";
 import { Loader } from "lucide-react";
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const posistions = ["ALL", "RB", "QB", "TE", "WR", "DEF", "FB"];
 const teams = ["ALL", "SF", "KC"];
@@ -38,7 +38,7 @@ function NflWeeklyRanking() {
 
   const { data: players, status } = useQuery({
     queryKey: ["nfl-fantasy"],
-    queryFn: () => axios.get("/api/nfl-fantasy").then(({ data }) => data?.players),
+    queryFn: () => axios.get("/api/nfl/fantasy").then(({ data }) => data?.players),
   });
 
   const isLoading = status === "pending";
