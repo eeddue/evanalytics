@@ -8,8 +8,8 @@ import { Loader } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-const options = ["Game", "1st Half", "1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter"];
 const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline", "Win Prob"];
+const options = ["Game", "1st Half", "1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter"];
 
 function NflOdds() {
   const { data: events, status } = useQuery({
@@ -65,28 +65,28 @@ function NflOdds() {
                       <p className="text-nowrap">{event.away_team}</p>
                     </TableCell>
                     <TableCell className="text-xs text-center">
-                      <p>
+                      <p className="text-nowrap">
                         {event.spreads.home.spread} {event.spreads.home.odds}
                       </p>
-                      <p>
+                      <p className="text-nowrap">
                         {event.spreads.away.spread} {event.spreads.away.odds}
                       </p>
                     </TableCell>
                     <TableCell className="text-xs text-center">
-                      <p>
+                      <p className="text-nowrap">
                         {event.totals.over.points} {event.totals.over.odds}
                       </p>
-                      <p>
+                      <p className="text-nowrap">
                         {event.totals.under.points} {event.totals.under.odds}
                       </p>
                     </TableCell>
                     <TableCell className="text-xs text-center">
-                      <p>{event.money_line.home}</p>
-                      <p>{event.money_line.away}</p>
+                      <p className="text-nowrap">{event.money_line.home}</p>
+                      <p className="text-nowrap">{event.money_line.away}</p>
                     </TableCell>
                     <TableCell className="text-xs text-center">
-                      <p>{event.win_probability.home}</p>
-                      <p>{event.win_probability.away}</p>
+                      <p className="text-nowrap">{event.win_probability.home}</p>
+                      <p className="text-nowrap">{event.win_probability.away}</p>
                     </TableCell>
                   </TableRow>
                 ))

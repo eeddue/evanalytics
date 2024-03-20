@@ -32,9 +32,9 @@ function CfbOdds() {
       </section>
 
       <div className="pagew mx-auto py-10">
-        <div className="flex gap-4 px-2.5">
+        <div className="flex gap-4 px-2.5 overflow-scroll">
           {options.map((option) => (
-            <button className="text-xs" key={option}>
+            <button className="text-xs text-nowrap" key={option}>
               {option}
             </button>
           ))}

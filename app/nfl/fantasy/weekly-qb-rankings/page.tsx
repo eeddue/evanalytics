@@ -44,7 +44,7 @@ function NflWeeklyRanking() {
   const isLoading = status === "pending";
 
   return (
-    <div className="pagew mx-auto p-5 space-y-4">
+    <div className="pagew mx-auto p-3 space-y-4">
       <h1 className="text-2xl text-primary">Weekly Fantasy Rankings</h1>
       <p className="text-xs">
         Shades of shape is currently in a beta phase. We welcome all feedback you have on our products, particularly in
@@ -59,7 +59,7 @@ function NflWeeklyRanking() {
 
       {/* Positions */}
       <div className="flex items-center gap-2">
-        <p className="text-xs">POSITION::</p>
+        <p className="text-xs">POSITION:</p>
         {posistions.map((pos) => (
           <button
             onClick={() => setSelectedPos(pos)}
@@ -73,7 +73,7 @@ function NflWeeklyRanking() {
 
       {/* Teams */}
       <div className="flex items-center gap-2">
-        <p className="text-xs">TEAMS::</p>
+        <p className="text-xs">TEAMS:</p>
         {teams.map((team) => (
           <button
             onClick={() => setSelectedTeam(team)}
@@ -87,7 +87,7 @@ function NflWeeklyRanking() {
 
       {/* Games */}
       <div className="flex items-center gap-2">
-        <p className="text-xs">GAMES::</p>
+        <p className="text-xs">GAMES:</p>
         {games.map((game) => (
           <button
             onClick={() => setSelectedGame(game)}

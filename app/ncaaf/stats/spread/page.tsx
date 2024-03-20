@@ -47,7 +47,7 @@ function CfbStatsSpread() {
 
   return (
     <div className="pagew mx-auto">
-      <div className="pagew mx-auto p-5 space-y-4">
+      <div className="pagew mx-auto p-3 space-y-4">
         <h1 className="text-2xl text-primary">NCAAF Betting Stats - Against The Spread (ATS) - Spread</h1>
         <p className="">
           Explore historical betting results to identify betting trends and profitability. Records are for the consensus

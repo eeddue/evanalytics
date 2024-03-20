@@ -63,7 +63,7 @@ function NbaStatsSpread() {
   const isLoading = status === "pending";
 
   return (
-    <div className="pagew mx-auto p-5 space-y-4">
+    <div className="pagew mx-auto p-3 space-y-4">
       <h1 className="text-2xl text-primary">NBA Betting Stats - Against The Spread (ATS) - Spread</h1>
       <p className="">NBA Spread betting stats by season, team and home/away splits</p>
       <p className="">
