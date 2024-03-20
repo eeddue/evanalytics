@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Loader } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Loader } from "lucide-react";
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-const topTableTopOtions = ["Spread", "Total", "Moneyline"];
+const sides = ["BOTH", "Home", "Away"];
 const seasons = ["2023", "2022", "2021"];
 const games = ["Season", "Last 5", "Last 3"];
-const sides = ["BOTH", "Home", "Away"];
+const topTableTopOtions = ["Spread", "Total", "Moneyline"];
 const tableHeaders = ["Season", "Team", "Win", "Loss", "Push"];
 
 type EventProps = {

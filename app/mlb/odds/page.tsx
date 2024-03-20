@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
-import { Loader } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Loader } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const options = ["Game", "1st Half", "2nd Half"];
-const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline",];
+const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline"];
 
 function MlbOdds() {
   const { data: events, status } = useQuery({

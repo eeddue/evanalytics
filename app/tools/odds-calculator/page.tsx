@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 
 function OddsCalculator() {
-  const [american, setAmerican] = useState<number | string>("");
   const [decimal, setDecimal] = useState<number | string>("");
+  const [american, setAmerican] = useState<number | string>("");
   const [fractional, setFractional] = useState<number | string>("");
   const [probability, setProbability] = useState<number | string>("");
 
