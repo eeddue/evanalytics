@@ -6,10 +6,18 @@ export async function GET() {
     const { data } = await axios.get("https://evanalytics.com/ncaaf/odds");
     const $ = cheerio.load(data);
 
-    let events: any = [];
-    const tableRows = $(".eva-odds-table > tbody > [data-category='Game Line']");
+    let eventDates: any = [];
+    const tableRows = $(".eva-odds-table > tbody > .eva-odds-date, [data-category='Game Line']");
 
     tableRows.map((index: number, row: any) => {
+      if ($(row).hasClass("eva-odds-date")) {
+        eventDates.push({ date: $(row).text().trim(), position: index, events: [] });
+      }
+    });
+
+    tableRows.map((index: number, row: any) => {
+      if ($(row).hasClass("eva-odds-date")) return;
+
       let event: any = {};
       const cells = $(row).find("td");
 
@@ -65,10 +73,14 @@ export async function GET() {
         }
       });
 
-      events.push(event);
+      const filteredEvents = eventDates.filter((d: any) => d.position < index);
+      const nearestEvent = filteredEvents[filteredEvents.length - 1];
+      if (nearestEvent) {
+        nearestEvent.events.push(event);
+      }
     });
 
-    return Response.json({ events });
+    return Response.json({ sections: eventDates });
   } catch (error: any) {
     return Response.json({ msg: error.message, events: [] });
   }

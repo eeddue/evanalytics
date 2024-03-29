@@ -1,13 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { Fragment } from "react";
 import axios from "axios";
-import moment from "moment";
 import { cn } from "@/lib/utils";
 import { Loader } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { EventProps } from "@/types";
 
 const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline", "Win Prob"];
 const options = ["Game", "1st Half", "2nd Half", "1st Quarter", "2nd Quarter", "3rd Quarter", " Quarter"];
@@ -15,7 +13,7 @@ const options = ["Game", "1st Half", "2nd Half", "1st Quarter", "2nd Quarter", "
 function CfbOdds() {
   const { data: events, status } = useQuery({
     queryKey: ["ncaafEvents"],
-    queryFn: () => axios.get(`/api/ncaaf/odds`).then(({ data }) => data.events),
+    queryFn: () => axios.get(`/api/ncaaf/odds`).then(({ data }) => data.sections),
   });
 
   const isLoading = status === "pending";
@@ -51,45 +49,48 @@ function CfbOdds() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
-                <TableCell colSpan={7} className="text-lg font-bold p-1">
-                  {moment(new Date()).format("LL")}
-                </TableCell>
-              </TableRow>
-
               {events.length ? (
-                events.map((event: EventProps, index: number) => (
-                  <TableRow key={index}>
-                    <TableCell className="text-xs text-center text-nowrap">{event.time}</TableCell>
-                    <TableCell>
-                      <p className="text-nowrap">{event.home_team}</p>
-                      <p className="text-nowrap">{event.away_team}</p>
-                    </TableCell>
-                    <TableCell className="text-xs text-center">
-                      <p className="text-nowrap">
-                        {event.spreads.home.spread} {event.spreads.home.odds}
-                      </p>
-                      <p className="text-nowrap">
-                        {event.spreads.away.spread} {event.spreads.away.odds}
-                      </p>
-                    </TableCell>
-                    <TableCell className="text-xs text-center">
-                      <p className="text-nowrap">
-                        {event.totals.over.points} {event.totals.over.odds}
-                      </p>
-                      <p className="text-nowrap">
-                        {event.totals.under.points} {event.totals.under.odds}
-                      </p>
-                    </TableCell>
-                    <TableCell className="text-xs text-center">
-                      <p className="text-nowrap">{event.money_line.home}</p>
-                      <p className="text-nowrap">{event.money_line.away}</p>
-                    </TableCell>
-                    <TableCell className="text-xs text-center">
-                      <p className="text-nowrap">{event.win_probability.home}</p>
-                      <p className="text-nowrap">{event.win_probability.away}</p>
-                    </TableCell>
-                  </TableRow>
+                events.map((section: any, index: number) => (
+                  <Fragment key={index}>
+                    <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
+                      <TableCell colSpan={7} className="text-lg font-bold p-1">
+                        {section.date}
+                      </TableCell>
+                    </TableRow>
+                    {section.events.map((event: any, id: number) => (
+                      <TableRow key={id}>
+                        <TableCell className="text-xs text-center text-nowrap">{event.time}</TableCell>
+                        <TableCell>
+                          <p className="text-nowrap">{event.home_team}</p>
+                          <p className="text-nowrap">{event.away_team}</p>
+                        </TableCell>
+                        <TableCell className="text-xs text-center">
+                          <p className="text-nowrap">
+                            {event.spreads.home.spread} {event.spreads.home.odds}
+                          </p>
+                          <p className="text-nowrap">
+                            {event.spreads.away.spread} {event.spreads.away.odds}
+                          </p>
+                        </TableCell>
+                        <TableCell className="text-xs text-center">
+                          <p className="text-nowrap">
+                            {event.totals.over.points} {event.totals.over.odds}
+                          </p>
+                          <p className="text-nowrap">
+                            {event.totals.under.points} {event.totals.under.odds}
+                          </p>
+                        </TableCell>
+                        <TableCell className="text-xs text-center">
+                          <p className="text-nowrap">{event.money_line.home}</p>
+                          <p className="text-nowrap">{event.money_line.away}</p>
+                        </TableCell>
+                        <TableCell className="text-xs text-center">
+                          <p className="text-nowrap">{event.win_probability.home}</p>
+                          <p className="text-nowrap">{event.win_probability.away}</p>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </Fragment>
                 ))
               ) : (
                 <TableRow className="text-center">

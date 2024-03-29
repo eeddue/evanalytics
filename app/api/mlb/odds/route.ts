@@ -6,10 +6,8 @@ export async function GET() {
     const { data } = await axios.get("https://evanalytics.com/mlb/odds");
     const $ = cheerio.load(data);
 
-    let events: any = [];
     let eventDates: any = [];
     const tableRows = $(".eva-odds-table > tbody > .eva-odds-date, [data-category='Game Line']");
-    const dateRows = $(".eva-odds-table > tbody > .eva-odds-date > td");
 
     tableRows.map((index: number, row: any) => {
       if ($(row).hasClass("eva-odds-date")) {
