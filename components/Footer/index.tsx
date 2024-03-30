@@ -23,7 +23,7 @@ const SECTIONS = [
     title: "MLB",
     links: [
       { title: "Line History", href: "/mlb/odds" },
-      { title: "Line Service", href: "/mlb/line-service" },
+      { title: "Against the spread (ATS)", href: "/mlb/stats/run-line" },
     ],
   },
   {

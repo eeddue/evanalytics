@@ -29,7 +29,7 @@ const NavItems = [
     href: "/mlb",
     links: [
       { link: "/mlb/odds", title: "Line History" },
-      { link: "/mlb/line-service", title: "Line Service" },
+      { link: "/mlb/stats/run-line", title: "Against the spread (ATS)" },
     ],
   },
   {
@@ -137,8 +137,8 @@ function Navbar() {
                   <AccordionItem value={i.toString()}>
                     <AccordionTrigger className="hover:text-primary">{item.name}</AccordionTrigger>
                     <AccordionContent className="flex flex-col gap-2 ml-4">
-                      {item.links.map((link) => (
-                        <SheetClose asChild key={link.link}>
+                      {item.links.map((link, index) => (
+                        <SheetClose asChild key={index}>
                           <Link href={link.link} className="text-sm hover:font-bold hover:text-primary">
                             {link.title}
                           </Link>

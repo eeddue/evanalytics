@@ -10,8 +10,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 const sides = ["BOTH", "Home", "Away"];
 const seasons = ["2023", "2022", "2021"];
 const games = ["Season", "Last 5", "Last 3"];
-const topTableTopOtions = ["Spread", "Total", "Moneyline"];
-const tableHeaders = ["Season", "Team", "Conf", "Win", "Loss", "Streak", "Home", "Away"];
+const topTableTopOtions = ["Run the line", "Total", "Moneyline"];
+const seasonTypes = ["Season", "Spring Training", "Regular", "Playoffs"];
+const tableHeaders = ["Season", "Team", "Win", "Loss", "Home", "Away", "Streak"];
 
 type EventProps = {
   team: string;
@@ -20,19 +21,20 @@ type EventProps = {
   streak: string;
   home: number;
   away: string;
-  conference: number;
+  season: string;
 };
 
-function NcaabStatsSpread() {
+function MlbStarsRunline() {
   const [selectedSn, setSelectedSn] = useState("2023");
   const [selectedGame, setSelectedGame] = useState("Season");
   const [selectedSide, setSelectedSide] = useState("BOTH");
+  const [selectedSnType, setSelectedSnType] = useState("Season");
 
   const { data: events, status } = useQuery({
     queryKey: ["ncaabSpread", selectedSn],
     queryFn: () =>
       axios
-        .get(`/api/ncaab/stats/spread`)
+        .get(`/api/mlb/stats/run-line`)
         .then(({ data }) => data?.events)
         .catch(() => []),
   });
@@ -42,10 +44,15 @@ function NcaabStatsSpread() {
   return (
     <div className="pagew mx-auto">
       <div className="pagew mx-auto p-3 space-y-4">
-        <h1 className="text-2xl text-primary">NCAAB Betting Stats - Against The Spread (ATS) - Spread</h1>
+        <h1 className="text-2xl text-primary">MLB Betting Stats - Against The Spread (ATS) - Run Line</h1>
         <p className="">
           Explore historical betting results to identify betting trends and profitability. Records are for the consensus
           odd and closing line.
+        </p>
+
+        <p className="text-xs">
+          Shades of shape is currently in a beta phase. We welcome all feedback you have on our products, particularly
+          in terms of usability. Our aim is to create products perfectly tailored to our users&apos; needs.
         </p>
 
         <section className="grid grid-cols-1 lg:grid-cols-6 gap-5">
@@ -81,6 +88,23 @@ function NcaabStatsSpread() {
                   className={cn("text-xs bg-muted px-3 py-[1px]", selectedSn === season && "bg-primary text-white")}
                 >
                   {season}
+                </button>
+              ))}
+            </div>
+
+            {/* Season types */}
+            <div className="flex items-center gap-2">
+              <p className="text-xs">Season Type:</p>
+              {seasonTypes.map((seasonTp) => (
+                <button
+                  onClick={() => setSelectedSnType(seasonTp)}
+                  key={seasonTp}
+                  className={cn(
+                    "text-xs bg-muted px-3 py-[1px]",
+                    selectedSnType === seasonTp && "bg-primary text-white"
+                  )}
+                >
+                  {seasonTp}
                 </button>
               ))}
             </div>
@@ -121,7 +145,7 @@ function NcaabStatsSpread() {
                 <TableHeader className="bg-primary">
                   <TableRow className="hover:bg-primary">
                     {tableHeaders.map((head, i) => (
-                      <TableHead key={head} className="font-bold text-white text-sm">
+                      <TableHead key={head} className={cn("font-bold text-white text-sm", i !== 1 && "text-center")}>
                         {head}
                       </TableHead>
                     ))}
@@ -133,12 +157,11 @@ function NcaabStatsSpread() {
                       <TableRow className={cn(index % 2 === 0 && "bg-muted")} key={index}>
                         <TableCell className="text-center text-xs">{selectedSn}</TableCell>
                         <TableCell className="text-xs">{event.team}</TableCell>
-                        <TableCell className="text-xs">{event.conference}</TableCell>
-                        <TableCell className="text-xs">{event.wins}</TableCell>
-                        <TableCell className="text-xs">{event.losses}</TableCell>
-                        <TableCell className="text-xs">{event.streak}</TableCell>
-                        <TableCell className="text-xs">{event.home}</TableCell>
-                        <TableCell className="text-xs">{event.away}</TableCell>
+                        <TableCell className="text-xs text-center">{event.wins}</TableCell>
+                        <TableCell className="text-xs text-center">{event.losses}</TableCell>
+                        <TableCell className="text-xs text-center">{event.home}</TableCell>
+                        <TableCell className="text-xs text-center">{event.away}</TableCell>
+                        <TableCell className="text-xs text-center">{event.streak}</TableCell>
                       </TableRow>
                     ))
                   ) : (
@@ -156,4 +179,4 @@ function NcaabStatsSpread() {
   );
 }
 
-export default NcaabStatsSpread;
+export default MlbStarsRunline;
