@@ -11,18 +11,18 @@ const sides = ["BOTH", "Home", "Away"];
 const seasons = ["2023", "2022", "2021"];
 const games = ["Season", "Last 5", "Last 3"];
 const topTableTopOtions = ["Spread", "Total", "Moneyline"];
-const tableHeaders = ["Season", "Team", "Win", "Loss", "Push"];
+const tableHeaders = ["Rank", "Season", "Team", "Win", "Loss", "Home", "Away", "Streak"];
 
 type EventProps = {
-  Season: string;
-  SeasonType: string;
-  Team: string;
-  Name: string;
-  Wins: number;
-  Losses: number;
-  Push: number;
-  Units: number;
-  Roi: number;
+  team: string;
+  losses: string;
+  wins: string;
+  streak: string;
+  home: number;
+  away: string;
+  conference: number;
+  season: string;
+  rank: number;
 };
 
 function CfbStatsSpread() {
@@ -34,12 +34,8 @@ function CfbStatsSpread() {
     queryKey: ["ncaafSpread", selectedSn],
     queryFn: () =>
       axios
-        .get(
-          `https://api.sportsdata.io/v3/ncaaf/scores/json/TeamSeasonStats/${
-            selectedSn.split("-")[0]
-          }?key=b84b94e7e7084ec48dbef86df6dd82f1`
-        )
-        .then(({ data }) => data)
+        .get(`/api/ncaaf/stats/spread`)
+        .then(({ data }) => data?.events)
         .catch(() => []),
   });
 
@@ -127,7 +123,7 @@ function CfbStatsSpread() {
                 <TableHeader className="bg-primary">
                   <TableRow className="hover:bg-primary">
                     {tableHeaders.map((head, i) => (
-                      <TableHead key={head} className="font-bold text-white text-sm">
+                      <TableHead key={head} className={cn("font-bold text-white text-sm", i > 2 && "text-center")}>
                         {head}
                       </TableHead>
                     ))}
@@ -136,14 +132,15 @@ function CfbStatsSpread() {
                 <TableBody>
                   {events.length ? (
                     events.map((event: EventProps, index: number) => (
-                      <TableRow className={cn(index % 2 === 0 && "bg-muted")} key={event.Team}>
-                        <TableCell className="!p-0 text-center text-xs">{event.Season}</TableCell>
-                        <TableCell className="text-xs">{event.Name}</TableCell>
-                        <TableCell className="text-xs">{event.Wins}</TableCell>
-                        <TableCell className="text-xs">{event.Losses}</TableCell>
-                        <TableCell className="text-xs">{event.Losses}</TableCell>
-                        {/* <TableCell className="text-xs">{event.Season}</TableCell>
-                      <TableCell className="text-xs">{event.Season}</TableCell> */}
+                      <TableRow className={cn(index % 2 === 0 && "bg-muted")} key={index}>
+                        <TableCell className="text-xs">{event.rank}</TableCell>
+                        <TableCell className="text-xs">{event.season}</TableCell>
+                        <TableCell className="text-xs">{event.team}</TableCell>
+                        <TableCell className="text-xs text-center">{event.wins}</TableCell>
+                        <TableCell className="text-xs text-center">{event.losses}</TableCell>
+                        <TableCell className="text-xs text-center">{event.home}</TableCell>
+                        <TableCell className="text-xs text-center">{event.away}</TableCell>
+                        <TableCell className="text-xs text-center">{event.streak}</TableCell>
                       </TableRow>
                     ))
                   ) : (
