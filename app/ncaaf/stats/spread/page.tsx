@@ -121,9 +121,12 @@ function CfbStatsSpread() {
             ) : (
               <Table className="overflow-x-scroll border-border border-[1px] mt-5">
                 <TableHeader className="bg-primary">
-                  <TableRow className="hover:bg-primary">
+                  <TableRow className="hover:bg-primary no-scroll">
                     {tableHeaders.map((head, i) => (
-                      <TableHead key={head} className={cn("font-bold text-white text-sm", i > 2 && "text-center")}>
+                      <TableHead
+                        key={head}
+                        className={cn("font-bold text-white text-sm one-line", i > 2 && "text-center")}
+                      >
                         {head}
                       </TableHead>
                     ))}
@@ -133,14 +136,14 @@ function CfbStatsSpread() {
                   {events.length ? (
                     events.map((event: EventProps, index: number) => (
                       <TableRow className={cn(index % 2 === 0 && "bg-muted")} key={index}>
-                        <TableCell className="text-xs">{event.rank}</TableCell>
-                        <TableCell className="text-xs">{event.season}</TableCell>
-                        <TableCell className="text-xs">{event.team}</TableCell>
-                        <TableCell className="text-xs text-center">{event.wins}</TableCell>
-                        <TableCell className="text-xs text-center">{event.losses}</TableCell>
-                        <TableCell className="text-xs text-center">{event.home}</TableCell>
-                        <TableCell className="text-xs text-center">{event.away}</TableCell>
-                        <TableCell className="text-xs text-center">{event.streak}</TableCell>
+                        <TableCell className="text-xs one-line">{event.rank}</TableCell>
+                        <TableCell className="text-xs one-line">{event.season}</TableCell>
+                        <TableCell className="text-xs one-line">{event.team}</TableCell>
+                        <TableCell className="text-xs one-line text-center">{event.wins}</TableCell>
+                        <TableCell className="text-xs one-line text-center">{event.losses}</TableCell>
+                        <TableCell className="text-xs one-line text-center">{event.home}</TableCell>
+                        <TableCell className="text-xs one-line text-center">{event.away}</TableCell>
+                        <TableCell className="text-xs one-line text-center">{event.streak}</TableCell>
                       </TableRow>
                     ))
                   ) : (

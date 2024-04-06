@@ -170,9 +170,9 @@ function NbaStatsSpread() {
           ) : (
             <Table className="overflow-x-scroll border-border border-[1px] mt-5">
               <TableHeader className="bg-primary">
-                <TableRow className="hover:bg-primary">
+                <TableRow className="hover:bg-primary noo-scroll">
                   {tableHeaders.map((head, i) => (
-                    <TableHead key={head} className={cn("font-bold text-white text-sm", i > 2 && "text-center")}>
+                    <TableHead key={head} className={cn("font-bold text-white text-sm one-line", i > 2 && "text-center")}>
                       {head}
                     </TableHead>
                   ))}
@@ -182,12 +182,12 @@ function NbaStatsSpread() {
                 {events.length ? (
                   events.map((event: EventProps, index: number) => (
                     <TableRow className={cn(index % 2 === 0 && "bg-muted")} key={event.Team}>
-                      <TableCell className="text-xs">{event.Season}</TableCell>
-                      <TableCell className="text-xs">{selectedSnType}</TableCell>
-                      <TableCell className="text-xs">{event.Name}</TableCell>
-                      <TableCell className="text-xs text-center">{event.Wins}</TableCell>
-                      <TableCell className="text-xs text-center">{event.Losses}</TableCell>
-                      <TableCell className="text-xs text-center">{event.Losses}</TableCell>
+                      <TableCell className="text-xs one-line">{event.Season}</TableCell>
+                      <TableCell className="text-xs one-line">{selectedSnType}</TableCell>
+                      <TableCell className="text-xs one-line">{event.Name}</TableCell>
+                      <TableCell className="text-xs one-line text-center">{event.Wins}</TableCell>
+                      <TableCell className="text-xs one-line text-center">{event.Losses}</TableCell>
+                      <TableCell className="text-xs one-line text-center">{event.Losses}</TableCell>
                       {/* <TableCell className="text-xs">{event.Season}</TableCell>
                       <TableCell className="text-xs">{event.Season}</TableCell> */}
                     </TableRow>

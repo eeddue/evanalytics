@@ -28,7 +28,7 @@ function NflOdds() {
       <div className="pagew mx-auto py-10">
         <div className="flex gap-4 px-2.5 overflow-x-scroll">
           {options.map((option) => (
-            <button className="text-xs text-nowrap" key={option}>
+            <button className="text-xs one-line" key={option}>
               {option}
             </button>
           ))}
@@ -43,15 +43,15 @@ function NflOdds() {
             <TableHeader>
               <TableRow>
                 {tableHeaders.map((head, index) => (
-                  <TableHead key={head} className={cn("font-bold text-nowrap", index !== 1 && "text-center")}>
+                  <TableHead key={head} className={cn("font-bold one-line", index !== 1 && "text-center")}>
                     {head}
                   </TableHead>
                 ))}
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold">
-                <TableCell colSpan={7} className="text-lg font-bold p-1">
+              <TableRow className="p-0 hover:bg-primary text-white w-full bg-primary font-bold no-scroll">
+                <TableCell colSpan={7} className="text-lg font-bold p-1 one-line">
                   {moment(new Date()).format("LL")}
                 </TableCell>
               </TableRow>
@@ -59,34 +59,34 @@ function NflOdds() {
               {events.length ? (
                 events.map((event: any, index: number) => (
                   <TableRow key={index}>
-                    <TableCell className="text-xs text-center text-nowrap">{event.time}</TableCell>
+                    <TableCell className="text-xs text-center one-line">{event.time}</TableCell>
                     <TableCell>
-                      <p className="text-nowrap">{event.home_team}</p>
-                      <p className="text-nowrap">{event.away_team}</p>
+                      <p className="one-line">{event.home_team}</p>
+                      <p className="one-line">{event.away_team}</p>
                     </TableCell>
                     <TableCell className="text-xs text-center">
-                      <p className="text-nowrap">
+                      <p className="one-line">
                         {event.spreads.home.spread} {event.spreads.home.odds}
                       </p>
-                      <p className="text-nowrap">
+                      <p className="one-line">
                         {event.spreads.away.spread} {event.spreads.away.odds}
                       </p>
                     </TableCell>
                     <TableCell className="text-xs text-center">
-                      <p className="text-nowrap">
+                      <p className="one-line">
                         {event.totals.over.points} {event.totals.over.odds}
                       </p>
-                      <p className="text-nowrap">
+                      <p className="one-line">
                         {event.totals.under.points} {event.totals.under.odds}
                       </p>
                     </TableCell>
                     <TableCell className="text-xs text-center">
-                      <p className="text-nowrap">{event.money_line.home}</p>
-                      <p className="text-nowrap">{event.money_line.away}</p>
+                      <p className="one-line">{event.money_line.home}</p>
+                      <p className="one-line">{event.money_line.away}</p>
                     </TableCell>
                     <TableCell className="text-xs text-center">
-                      <p className="text-nowrap">{event.win_probability.home}</p>
-                      <p className="text-nowrap">{event.win_probability.away}</p>
+                      <p className="one-line">{event.win_probability.home}</p>
+                      <p className="one-line">{event.win_probability.away}</p>
                     </TableCell>
                   </TableRow>
                 ))

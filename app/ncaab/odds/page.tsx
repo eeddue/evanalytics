@@ -44,9 +44,9 @@ function CbbOdds() {
         ) : (
           <Table className="overflow-x-scroll">
             <TableHeader>
-              <TableRow>
+              <TableRow className="no-scroll">
                 {tableHeaders.map((head, index) => (
-                  <TableHead key={head} className={cn("font-bold text-nowrap", index !== 1 && "text-center")}>
+                  <TableHead key={head} className={cn("font-bold one-line", index !== 1 && "text-center")}>
                     {head}
                   </TableHead>
                 ))}
@@ -63,34 +63,34 @@ function CbbOdds() {
                     </TableRow>
                     {section.events.map((event: any, id: number) => (
                       <TableRow key={id}>
-                        <TableCell className="text-xs text-center text-nowrap">{event.time}</TableCell>
+                        <TableCell className="text-xs text-center one-line">{event.time}</TableCell>
                         <TableCell>
-                          <p className="text-nowrap">{event.home_team}</p>
-                          <p className="text-nowrap">{event.away_team}</p>
+                          <p className="one-line">{event.home_team}</p>
+                          <p className="one-line">{event.away_team}</p>
                         </TableCell>
                         <TableCell className="text-xs text-center">
-                          <p className="text-nowrap">
+                          <p className="one-line">
                             {event.spreads.home.spread} {event.spreads.home.odds}
                           </p>
-                          <p className="text-nowrap">
+                          <p className="one-line">
                             {event.spreads.away.spread} {event.spreads.away.odds}
                           </p>
                         </TableCell>
                         <TableCell className="text-xs text-center">
-                          <p className="text-nowrap">
+                          <p className="one-line">
                             {event.totals.over.points} {event.totals.over.odds}
                           </p>
-                          <p className="text-nowrap">
+                          <p className="one-line">
                             {event.totals.under.points} {event.totals.under.odds}
                           </p>
                         </TableCell>
                         <TableCell className="text-xs text-center">
-                          <p className="text-nowrap">{event.money_line.home}</p>
-                          <p className="text-nowrap">{event.money_line.away}</p>
+                          <p className="one-line">{event.money_line.home}</p>
+                          <p className="one-line">{event.money_line.away}</p>
                         </TableCell>
                         <TableCell className="text-xs text-center">
-                          <p className="text-nowrap">{event.win_probability.home}</p>
-                          <p className="text-nowrap">{event.win_probability.away}</p>
+                          <p className="one-line">{event.win_probability.home}</p>
+                          <p className="one-line">{event.win_probability.away}</p>
                         </TableCell>
                       </TableRow>
                     ))}

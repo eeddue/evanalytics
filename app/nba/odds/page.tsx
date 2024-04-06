@@ -4,8 +4,8 @@ import axios from "axios";
 import moment from "moment";
 import { cn } from "@/lib/utils";
 import { Loader } from "lucide-react";
-import React, { Fragment, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import React, { Fragment, useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline"];

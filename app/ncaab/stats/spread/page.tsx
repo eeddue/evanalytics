@@ -118,10 +118,10 @@ function NcaabStatsSpread() {
               <Loader size={30} className="animate-spin self-center mt-20" />
             ) : (
               <Table className="overflow-x-scroll border-border border-[1px] mt-5">
-                <TableHeader className="bg-primary">
+                <TableHeader className="bg-primary no-scroll">
                   <TableRow className="hover:bg-primary">
                     {tableHeaders.map((head, i) => (
-                      <TableHead key={head} className="font-bold text-white text-sm">
+                      <TableHead key={head} className="font-bold text-white text-sm one-line">
                         {head}
                       </TableHead>
                     ))}
@@ -131,14 +131,14 @@ function NcaabStatsSpread() {
                   {events.length ? (
                     events.map((event: EventProps, index: number) => (
                       <TableRow className={cn(index % 2 === 0 && "bg-muted")} key={index}>
-                        <TableCell className="text-center text-xs">{selectedSn}</TableCell>
-                        <TableCell className="text-xs">{event.team}</TableCell>
-                        <TableCell className="text-xs">{event.conference}</TableCell>
-                        <TableCell className="text-xs">{event.wins}</TableCell>
-                        <TableCell className="text-xs">{event.losses}</TableCell>
-                        <TableCell className="text-xs">{event.streak}</TableCell>
-                        <TableCell className="text-xs">{event.home}</TableCell>
-                        <TableCell className="text-xs">{event.away}</TableCell>
+                        <TableCell className="text-center text-xs one-line">{selectedSn}</TableCell>
+                        <TableCell className="text-xs one-line">{event.team}</TableCell>
+                        <TableCell className="text-xs one-line">{event.conference}</TableCell>
+                        <TableCell className="text-xs one-line">{event.wins}</TableCell>
+                        <TableCell className="text-xs one-line">{event.losses}</TableCell>
+                        <TableCell className="text-xs one-line">{event.streak}</TableCell>
+                        <TableCell className="text-xs one-line">{event.home}</TableCell>
+                        <TableCell className="text-xs one-line">{event.away}</TableCell>
                       </TableRow>
                     ))
                   ) : (
