@@ -77,10 +77,10 @@ function NbaOdds() {
       </section>
 
       <div className="pagew mx-auto py-10">
-        <div className="flex gap-4 overflow-x-scroll px-2.5">
+        <div className="flex gap-4 overflow-x-scroll px-2.5 no-scroll">
           {options.map((option) => (
             <button
-              className={cn("text-xs text-nowrap", selectedOption === option.value && "font-bold text-primary")}
+              className={cn("text-xs one-line", selectedOption === option.value && "text-primary")}
               onClick={() => setSelectedOption(option.value)}
               key={option.value}
               disabled={isLoading}
@@ -95,11 +95,11 @@ function NbaOdds() {
         {isLoading ? (
           <Loader size={30} className="animate-spin self-center mt-20 mx-auto" />
         ) : (
-          <Table className="overflow-x-scroll">
+          <Table className="overflow-x-scroll no-scroll">
             <TableHeader>
               <TableRow>
                 {tableHeaders.map((head, i) => (
-                  <TableHead key={head} className={cn("text-black font-bold text-nowrap", i !== 1 && "text-center")}>
+                  <TableHead key={head} className={cn("text-black font-bold one-line", i !== 1 && "text-center")}>
                     {head}
                   </TableHead>
                 ))}
@@ -116,32 +116,32 @@ function NbaOdds() {
                 matches.map((match, index) => (
                   <Fragment key={index}>
                     <TableRow>
-                      <TableCell className="text-xs text-center text-nowrap">{match.kickoff}</TableCell>
+                      <TableCell className="text-xs text-center one-line">{match.kickoff}</TableCell>
                       <TableCell>
-                        <p className="text-nowrap">{match.home_team}</p>
-                        <p className="text-nowrap">{match.away_team}</p>
+                        <p className="one-line">{match.home_team}</p>
+                        <p className="one-line">{match.away_team}</p>
                       </TableCell>
                       <TableCell className="text-xs text-center">
-                        <p className="text-nowrap">
+                        <p className="one-line">
                           {match.odds.spreads.home_team.spread} {match.odds.spreads.home_team.odds}
                         </p>
-                        <p className="text-nowrap">
+                        <p className="one-line">
                           {match.odds.spreads.away_team.spread} {match.odds.spreads.away_team.odds}
                         </p>
                       </TableCell>
                       <TableCell className="text-xs text-center">
-                        <p className="text-nowrap">
+                        <p className="one-line">
                           {match.odds.totals.home_team.points !== "-" && "o"} {match.odds.totals.home_team.points}{" "}
                           {match.odds.totals.home_team.odds}
                         </p>
-                        <p className="text-nowrap">
+                        <p className="one-line">
                           {match.odds.totals.home_team.points !== "-" && "u"}
                           {match.odds.totals.away_team.points} {match.odds.totals.away_team.odds}
                         </p>
                       </TableCell>
                       <TableCell className="text-xs text-center">
-                        <p className="text-nowrap">{match.odds.moneyline.home_team.odds}</p>
-                        <p className="text-nowrap">{match.odds.moneyline.away_team.odds}</p>
+                        <p className="one-line">{match.odds.moneyline.home_team.odds}</p>
+                        <p className="one-line">{match.odds.moneyline.away_team.odds}</p>
                       </TableCell>
                     </TableRow>
                   </Fragment>

@@ -10,6 +10,19 @@
   filter: grayscale(100%);
 }
 
+.no-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.one-line {
+  @apply text-nowrap whitespace-nowrap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
