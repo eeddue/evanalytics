@@ -92,7 +92,7 @@ function NflOdds() {
                 ))
               ) : (
                 <TableRow className="text-center">
-                  <TableCell colSpan={6}>There were no events found</TableCell>
+                  <TableCell colSpan={6}>No NFL events for today</TableCell>
                 </TableRow>
               )}
             </TableBody>

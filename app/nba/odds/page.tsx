@@ -2,13 +2,13 @@
 
 import axios from "axios";
 import moment from "moment";
-import { cn } from "@/lib/utils";
 import { Loader } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { calculateWinProbility, cn } from "@/lib/utils";
 import React, { Fragment, useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline"];
+const tableHeaders = ["Time", "Team", "Spread", "Totals", "Moneyline", "Win Prob"];
 const options = [
   { title: "Game", value: "full_game" },
   { title: "1st Half", value: "first_half" },
@@ -143,12 +143,31 @@ function NbaOdds() {
                         <p className="one-line">{match.odds.moneyline.home_team.odds}</p>
                         <p className="one-line">{match.odds.moneyline.away_team.odds}</p>
                       </TableCell>
+
+                      <TableCell className="text-xs text-center">
+                        <p className="one-line">
+                          {
+                            calculateWinProbility(
+                              match.odds.moneyline.home_team.odds,
+                              match.odds.moneyline.away_team.odds
+                            ).home
+                          }
+                        </p>
+                        <p className="one-line">
+                          {
+                            calculateWinProbility(
+                              match.odds.moneyline.home_team.odds,
+                              match.odds.moneyline.away_team.odds
+                            ).away
+                          }
+                        </p>
+                      </TableCell>
                     </TableRow>
                   </Fragment>
                 ))
               ) : (
                 <TableRow className="text-center">
-                  <TableCell colSpan={6}>There were no events found</TableCell>
+                  <TableCell colSpan={6}>No NBA events for today</TableCell>
                 </TableRow>
               )}
             </TableBody>
