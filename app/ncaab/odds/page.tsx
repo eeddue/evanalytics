@@ -3,8 +3,8 @@
 import axios from "axios";
 import { Loader } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
 import { calculateWinProbility, cn } from "@/lib/utils";
-import React, { Fragment, useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import moment from "moment";
 
@@ -122,9 +122,11 @@ function CbbOdds() {
                     </TableCell>
                     <TableCell className="text-xs text-center">
                       <p className="one-line">
+                        {match.odds.totals.home_team.points !== "-" && "o"}
                         {match.odds.totals.home_team.points} {match.odds.totals.away_team.odds}
                       </p>
                       <p className="one-line">
+                        {match.odds.totals.home_team.points !== "-" && "u"}
                         {match.odds.totals.away_team.points} {match.odds.totals.away_team.odds}
                       </p>
                     </TableCell>

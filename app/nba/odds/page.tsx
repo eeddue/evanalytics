@@ -82,8 +82,8 @@ function NbaOdds() {
             <button
               className={cn("text-xs one-line", selectedOption === option.value && "text-primary")}
               onClick={() => setSelectedOption(option.value)}
-              key={option.value}
               disabled={isLoading}
+              key={option.value}
             >
               {option.title}
             </button>

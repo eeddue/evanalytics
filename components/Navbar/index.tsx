@@ -20,8 +20,8 @@ const NavItems = [
     name: "NFL",
     href: "/nfl",
     links: [
-      { link: "/nfl/fantasy/weekly-qb-rankings", title: "Weekly Rankings" },
       { link: "/nfl/odds", title: "Line History" },
+      { link: "/nfl/fantasy/weekly-qb-rankings", title: "Weekly Rankings" },
     ],
   },
   {
@@ -59,14 +59,6 @@ const NavItems = [
 ];
 
 const RightNavItems = [
-  // {
-  //   name: "Products",
-  //   href: "/products",
-  //   links: [
-  //     { link: "/products/writenow", title: "WriteNow" },
-  //     { link: "/products/betting-models", title: "Betting Models" },
-  //   ],
-  // },
   {
     name: "Tools",
     href: "/tools",

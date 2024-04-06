@@ -15,8 +15,8 @@ const SECTIONS = [
   {
     title: "NFL",
     links: [
-      { title: "Weekly Rankings", href: "/nfl/fantasy/weekly-qb-rankings" },
       { title: "Line history", href: "/nfl/odds" },
+      { title: "Weekly Rankings", href: "/nfl/fantasy/weekly-qb-rankings" },
     ],
   },
   {
@@ -29,22 +29,22 @@ const SECTIONS = [
   {
     title: "NBA",
     links: [
-      { title: "Line History", href: "/nba/stats/spread" },
-      { title: "Game Odds", href: "/nba/odds" },
+      { title: "Line History", href: "/nba/odds" },
+      { title: "Game Odds", href: "/nba/stats/spread" },
     ],
   },
   {
     title: "NCAAB",
     links: [
-      { title: "Line History", href: "/ncaab/stats/spread" },
-      { title: "Game Odds", href: "/ncaab/odds" },
+      { title: "Line History", href: "/ncaab/odds" },
+      { title: "Game Odds", href: "/ncaab/stats/spread" },
     ],
   },
   {
     title: "NCAAF",
     links: [
-      { title: "Line History", href: "/ncaaf/stats/spread" },
-      { title: "Game Odds", href: "/ncaaf/odds" },
+      { title: "Line History", href: "/ncaaf/odds" },
+      { title: "Game Odds", href: "/ncaaf/stats/spread" },
     ],
   },
   {
@@ -54,13 +54,6 @@ const SECTIONS = [
       { title: "Odds Calculator", href: "/tools/odds-calculator" },
     ],
   },
-  // {
-  //   title: "Products",
-  //   links: [
-  //     { title: "Betting Models", href: "/products/betting-models" },
-  //     { title: "Writenow", href: "/products/writenow" },
-  //   ],
-  // },
 ];
 
 function Footer() {
